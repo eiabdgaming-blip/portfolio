@@ -57,21 +57,18 @@
     </script>
 
     <style>
-        /* التنسيقات الأساسية والتأثيرات البصرية */
         body {
             background-color: #0a0a0f;
             color: #ffffff;
             overflow-x: hidden;
         }
 
-        /* تأثير النص المضيء */
         .glow-text {
             text-shadow: 0 0 20px rgba(139, 92, 246, 0.5),
                          0 0 40px rgba(139, 92, 246, 0.3),
                          0 0 60px rgba(139, 92, 246, 0.1);
         }
 
-        /* تأثير الزجاجية */
         .glass {
             background: rgba(255, 255, 255, 0.03);
             backdrop-filter: blur(10px);
@@ -84,7 +81,6 @@
             border: 1px solid rgba(255, 255, 255, 0.1);
         }
 
-        /* تأثير البطاقات عند المرور */
         .project-card {
             transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
         }
@@ -102,7 +98,6 @@
             transform: scale(1.1);
         }
 
-        /* المؤشر المخصص */
         .custom-cursor {
             width: 20px;
             height: 20px;
@@ -125,7 +120,6 @@
             z-index: 9999;
         }
 
-        /* شريط التمرير المخصص */
         ::-webkit-scrollbar {
             width: 10px;
         }
@@ -139,7 +133,6 @@
             border-radius: 5px;
         }
 
-        /* تأثير التحميل */
         .loader {
             position: fixed;
             inset: 0;
@@ -171,7 +164,6 @@
             transition: width 0.3s;
         }
 
-        /* خط زمني للخبرات */
         .timeline-line {
             position: absolute;
             left: 50%;
@@ -188,7 +180,6 @@
             }
         }
 
-        /* تأثيرات الظهور */
         .reveal {
             opacity: 0;
             transform: translateY(30px);
@@ -200,7 +191,6 @@
             transform: translateY(0);
         }
 
-        /* خلفية الجسيمات */
         #particles-canvas {
             position: absolute;
             top: 0;
@@ -210,10 +200,194 @@
             z-index: 0;
         }
 
-        /* فلاتر البورتفوليو النشطة */
         .filter-btn.active {
             background: linear-gradient(135deg, #8b5cf6, #06b6d4);
             color: white;
+        }
+
+        .video-card {
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .video-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(6, 182, 212, 0.2);
+            border-color: rgba(6, 182, 212, 0.5);
+        }
+
+        .youtube-btn {
+            background: linear-gradient(135deg, #FF0000, #CC0000);
+            transition: all 0.3s;
+        }
+
+        .youtube-btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 10px 30px rgba(255, 0, 0, 0.3);
+        }
+
+        /* ====== أنماط التصنيفات الجديدة ====== */
+        .category-card {
+            position: relative;
+            overflow: hidden;
+            border-radius: 24px;
+            cursor: pointer;
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+            aspect-ratio: 4/3;
+        }
+
+        .category-card:hover {
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 0 25px 50px -12px rgba(139, 92, 246, 0.4);
+        }
+
+        .category-card img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.7s ease;
+        }
+
+        .category-card:hover img {
+            transform: scale(1.1);
+        }
+
+        .category-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to top, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0.3) 50%, transparent 100%);
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            padding: 2rem;
+            opacity: 1;
+            transition: all 0.3s;
+        }
+
+        .category-card:hover .category-overlay {
+            background: linear-gradient(to top, rgba(139, 92, 246, 0.9) 0%, rgba(0,0,0,0.5) 100%);
+        }
+
+        .projects-gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 1.5rem;
+            padding: 1rem 0;
+        }
+
+        .project-item {
+            position: relative;
+            border-radius: 16px;
+            overflow: hidden;
+            aspect-ratio: 4/3;
+            cursor: pointer;
+            transition: transform 0.3s;
+            background: rgba(255,255,255,0.05);
+        }
+
+        .project-item:hover {
+            transform: scale(1.05);
+            z-index: 10;
+        }
+
+        .project-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .project-item-overlay {
+            position: absolute;
+            inset: 0;
+            background: rgba(0,0,0,0.7);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+
+        .project-item:hover .project-item-overlay {
+            opacity: 1;
+        }
+
+        .category-modal {
+            display: none;
+            position: fixed;
+            inset: 0;
+            z-index: 1000;
+            background: rgba(0,0,0,0.95);
+            backdrop-filter: blur(10px);
+            overflow-y: auto;
+        }
+
+        .category-modal.active {
+            display: block;
+            animation: fadeIn 0.3s;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .category-modal-content {
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 2rem;
+        }
+
+        .close-category-modal {
+            position: fixed;
+            top: 2rem;
+            right: 2rem;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.1);
+            border: 1px solid rgba(255,255,255,0.2);
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+            transition: all 0.3s;
+            z-index: 1001;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .close-category-modal:hover {
+            background: #ef4444;
+            transform: rotate(90deg);
+        }
+
+        .lightbox {
+            display: none;
+            position: fixed;
+            inset: 0;
+            z-index: 2000;
+            background: rgba(0,0,0,0.98);
+            justify-content: center;
+            align-items: center;
+        }
+
+        .lightbox.active {
+            display: flex;
+        }
+
+        .lightbox img {
+            max-width: 90%;
+            max-height: 90vh;
+            border-radius: 8px;
+            box-shadow: 0 25px 50px -12px rgba(0,0,0,0.5);
+        }
+
+        .lightbox-close {
+            position: absolute;
+            top: 20px;
+            right: 40px;
+            color: white;
+            font-size: 3rem;
+            cursor: pointer;
         }
     </style>
 <base target="_blank">
@@ -225,9 +399,9 @@
         <div class="loader-content">
             <h1 class="font-display text-4xl font-bold mb-4 animate-pulse">
                 <span class="text-transparent bg-clip-text bg-gradient-to-r from-primary to-secondary">
-                    CREATIVE
+                 PORTFOLIO
+
                 </span>
-                PORTFOLIO
             </h1>
             <div class="progress-bar">
                 <div class="progress-fill" id="progress-fill"></div>
@@ -373,7 +547,6 @@
                 <!-- الصورة/الشكل -->
                 <div class="relative reveal">
                     <div class="aspect-square rounded-3xl overflow-hidden glass relative group">
-                        <!-- placeholder للصورة الشخصية -->
                         <div class="absolute inset-0 bg-gradient-to-br from-primary/20 to-secondary/20 flex items-center justify-center">
                             <i class="fas fa-user text-6xl text-white/20"></i>
                         </div>
@@ -474,7 +647,7 @@
         </div>
     </section>
 
-    <!-- سكشن البورتفوليو - مع نظام الفلترة الذكي -->
+    <!-- سكشن البورتفوليو - نظام التصنيفات الجديد -->
     <section id="portfolio" class="py-20 md:py-32 relative">
         <div class="absolute inset-0 bg-gradient-to-b from-transparent via-primary/5 to-transparent"></div>
         
@@ -484,162 +657,101 @@
                     Selected <span class="text-transparent bg-clip-text bg-gradient-to-r from-primary to-secondary">Works</span>
                 </h2>
                 <p class="text-gray-400 max-w-2xl mx-auto">
-                    A curated collection of projects showcasing creativity, technical skill, and attention to detail.
+                    Click on any category to view all related projects
                 </p>
             </div>
 
-            <!-- أزرار الفلترة -->
-            <div class="flex flex-wrap justify-center gap-4 mb-12 reveal">
-                <button class="filter-btn active px-6 py-3 rounded-full glass text-sm font-medium transition-all hover:bg-white/10" data-filter="all">
-                    All Projects
-                </button>
-                <button class="filter-btn px-6 py-3 rounded-full glass text-sm font-medium transition-all hover:bg-white/10 text-gray-400" data-filter="graphic">
-                    Graphic Design
-                </button>
-                <button class="filter-btn px-6 py-3 rounded-full glass text-sm font-medium transition-all hover:bg-white/10 text-gray-400" data-filter="video">
-                    Video Editing
-                </button>
-                <button class="filter-btn px-6 py-3 rounded-full glass text-sm font-medium transition-all hover:bg-white/10 text-gray-400" data-filter="motion">
-                    Motion Graphics
-                </button>
-                <button class="filter-btn px-6 py-3 rounded-full glass text-sm font-medium transition-all hover:bg-white/10 text-gray-400" data-filter="ui">
-                    UI/UX Design
-                </button>
-            </div>
-
-            <!-- شبكة المشاريع -->
-            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8" id="portfolio-grid">
-                <!-- مشروع 1 - جرافيك ديزاين -->
-                <div class="project-card group rounded-2xl overflow-hidden glass relative cursor-pointer reveal" 
-                     data-category="graphic"
-                     onclick="openProjectModal(1)">
-                    <div class="aspect-[4/3] overflow-hidden">
-                        <img src="https://images.unsplash.com/photo-1561070791-2526d30994b5?w=800&h=600&fit=crop" 
-                             alt="Brand Identity" 
-                             class="w-full h-full object-cover transition-transform duration-700">
-                    </div>
-                    <div class="project-overlay absolute inset-0 bg-gradient-to-t from-black/90 via-black/50 to-transparent opacity-0 transition-opacity duration-300 flex flex-col justify-end p-6">
-                        <span class="text-primary text-sm font-medium mb-2">Graphic Design</span>
-                        <h3 class="font-display text-xl font-bold mb-2">Brand Identity System</h3>
-                        <p class="text-gray-300 text-sm mb-4">Complete visual identity for tech startup</p>
-                        <span class="inline-flex items-center text-sm text-white group-hover:translate-x-2 transition-transform">
-                            View Story <i class="fas fa-arrow-right ml-2"></i>
-                        </span>
+            <!-- شبكة التصنيفات 2x2 -->
+            <div class="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">
+                
+                <!-- 1. Graphic Design -->
+                <div class="category-card reveal" onclick="openCategory('graphic')">
+                    <img src="https://images.unsplash.com/photo-1626785774625-0b1c2c4eab67?w=800&h=600&fit=crop" alt="Graphic Design">
+                    <div class="category-overlay">
+                        <div>
+                            <span class="text-primary text-sm font-bold tracking-wider mb-2 block">6 Projects</span>
+                            <h3 class="font-display text-3xl font-bold mb-2">Graphic Design</h3>
+                            <p class="text-gray-300 text-sm mb-4 opacity-80">Brand identities, posters, and visual designs</p>
+                            <div class="flex items-center text-primary font-semibold">
+                                <span>View Projects</span>
+                                <i class="fas fa-arrow-right ml-2"></i>
+                            </div>
+                        </div>
                     </div>
                 </div>
 
-                <!-- مشروع 2 - موشن جرافيك -->
-                <div class="project-card group rounded-2xl overflow-hidden glass relative cursor-pointer reveal" 
-                     data-category="motion"
-                     onclick="openProjectModal(2)">
-                    <div class="aspect-[4/3] overflow-hidden">
-                        <img src="https://images.unsplash.com/photo-1550745165-9bc0b252726f?w=800&h=600&fit=crop" 
-                             alt="Motion Graphics" 
-                             class="w-full h-full object-cover transition-transform duration-700">
-                    </div>
-                    <div class="project-overlay absolute inset-0 bg-gradient-to-t from-black/90 via-black/50 to-transparent opacity-0 transition-opacity duration-300 flex flex-col justify-end p-6">
-                        <span class="text-secondary text-sm font-medium mb-2">Motion Graphics</span>
-                        <h3 class="font-display text-xl font-bold mb-2">Product Launch Animation</h3>
-                        <p class="text-gray-300 text-sm mb-4">3D motion graphics for product reveal</p>
-                        <span class="inline-flex items-center text-sm text-white group-hover:translate-x-2 transition-transform">
-                            View Story <i class="fas fa-arrow-right ml-2"></i>
-                        </span>
+                <!-- 2. Motion Graphics -->
+                <div class="category-card reveal" onclick="openCategory('motion')">
+                    <img src="https://images.unsplash.com/photo-1550745165-9bc0b252726f?w=800&h=600&fit=crop" alt="Motion Graphics">
+                    <div class="category-overlay">
+                        <div>
+                            <span class="text-secondary text-sm font-bold tracking-wider mb-2 block">4 Projects</span>
+                            <h3 class="font-display text-3xl font-bold mb-2">Motion Graphics</h3>
+                            <p class="text-gray-300 text-sm mb-4 opacity-80">Animations and visual effects</p>
+                            <div class="flex items-center text-secondary font-semibold">
+                                <span>View Projects</span>
+                                <i class="fas fa-arrow-right ml-2"></i>
+                            </div>
+                        </div>
                     </div>
                 </div>
 
-                <!-- مشروع 3 - UI/UX -->
-                <div class="project-card group rounded-2xl overflow-hidden glass relative cursor-pointer reveal" 
-                     data-category="ui"
-                     onclick="openProjectModal(3)">
-                    <div class="aspect-[4/3] overflow-hidden">
-                        <img src="https://images.unsplash.com/photo-1551650975-87deedd944c3?w=800&h=600&fit=crop" 
-                             alt="UI Design" 
-                             class="w-full h-full object-cover transition-transform duration-700">
-                    </div>
-                    <div class="project-overlay absolute inset-0 bg-gradient-to-t from-black/90 via-black/50 to-transparent opacity-0 transition-opacity duration-300 flex flex-col justify-end p-6">
-                        <span class="text-accent text-sm font-medium mb-2">UI/UX Design</span>
-                        <h3 class="font-display text-xl font-bold mb-2">Fintech Mobile App</h3>
-                        <p class="text-gray-300 text-sm mb-4">Complete UI/UX design for banking app</p>
-                        <span class="inline-flex items-center text-sm text-white group-hover:translate-x-2 transition-transform">
-                            View Story <i class="fas fa-arrow-right ml-2"></i>
-                        </span>
+                <!-- 3. Video Editing -->
+                <div class="category-card reveal" onclick="openCategory('video')">
+                    <img src="https://images.unsplash.com/photo-1574717024653-61fd2cf4d44d?w=800&h=600&fit=crop" alt="Video Editing">
+                    <div class="category-overlay">
+                        <div>
+                            <span class="text-accent text-sm font-bold tracking-wider mb-2 block">5 Projects</span>
+                            <h3 class="font-display text-3xl font-bold mb-2">Video Editing</h3>
+                            <p class="text-gray-300 text-sm mb-4 opacity-80">Cinematic editing and production</p>
+                            <div class="flex items-center text-accent font-semibold">
+                                <span>View Projects</span>
+                                <i class="fas fa-arrow-right ml-2"></i>
+                            </div>
+                        </div>
                     </div>
                 </div>
 
-                <!-- مشروع 4 - فيديو -->
-                <div class="project-card group rounded-2xl overflow-hidden glass relative cursor-pointer reveal" 
-                     data-category="video"
-                     onclick="openProjectModal(4)">
-                    <div class="aspect-[4/3] overflow-hidden">
-                        <img src="https://images.unsplash.com/photo-1574717024653-61fd2cf4d44d?w=800&h=600&fit=crop" 
-                             alt="Video Editing" 
-                             class="w-full h-full object-cover transition-transform duration-700">
-                    </div>
-                    <div class="project-overlay absolute inset-0 bg-gradient-to-t from-black/90 via-black/50 to-transparent opacity-0 transition-opacity duration-300 flex flex-col justify-end p-6">
-                        <span class="text-primary text-sm font-medium mb-2">Video Editing</span>
-                        <h3 class="font-display text-xl font-bold mb-2">Documentary Short Film</h3>
-                        <p class="text-gray-300 text-sm mb-4">Cinematic editing for documentary</p>
-                        <span class="inline-flex items-center text-sm text-white group-hover:translate-x-2 transition-transform">
-                            View Story <i class="fas fa-arrow-right ml-2"></i>
-                        </span>
+                <!-- 4. UI/UX Design -->
+                <div class="category-card reveal" onclick="openCategory('ui')">
+                    <img src="https://images.unsplash.com/photo-1561070791-2526d30994b5?w=800&h=600&fit=crop" alt="UI/UX Design">
+                    <div class="category-overlay">
+                        <div>
+                            <span class="text-primary text-sm font-bold tracking-wider mb-2 block">3 Projects</span>
+                            <h3 class="font-display text-3xl font-bold mb-2">UI/UX Design</h3>
+                            <p class="text-gray-300 text-sm mb-4 opacity-80">User interfaces and experiences</p>
+                            <div class="flex items-center text-primary font-semibold">
+                                <span>View Projects</span>
+                                <i class="fas fa-arrow-right ml-2"></i>
+                            </div>
+                        </div>
                     </div>
                 </div>
 
-                <!-- مشروع 5 - جرافيك -->
-                <div class="project-card group rounded-2xl overflow-hidden glass relative cursor-pointer reveal" 
-                     data-category="graphic"
-                     onclick="openProjectModal(5)">
-                    <div class="aspect-[4/3] overflow-hidden">
-                        <img src="https://images.unsplash.com/photo-1626785774573-4b799315345d?w=800&h=600&fit=crop" 
-                             alt="Poster Design" 
-                             class="w-full h-full object-cover transition-transform duration-700">
-                    </div>
-                    <div class="project-overlay absolute inset-0 bg-gradient-to-t from-black/90 via-black/50 to-transparent opacity-0 transition-opacity duration-300 flex flex-col justify-end p-6">
-                        <span class="text-primary text-sm font-medium mb-2">Graphic Design</span>
-                        <h3 class="font-display text-xl font-bold mb-2">Event Campaign Posters</h3>
-                        <p class="text-gray-300 text-sm mb-4">Series of posters for music festival</p>
-                        <span class="inline-flex items-center text-sm text-white group-hover:translate-x-2 transition-transform">
-                            View Story <i class="fas fa-arrow-right ml-2"></i>
-                        </span>
-                    </div>
-                </div>
-
-                <!-- مشروع 6 - موشن -->
-                <div class="project-card group rounded-2xl overflow-hidden glass relative cursor-pointer reveal" 
-                     data-category="motion"
-                     onclick="openProjectModal(6)">
-                    <div class="aspect-[4/3] overflow-hidden">
-                        <img src="https://images.unsplash.com/photo-1536240478700-b869070f9279?w=800&h=600&fit=crop" 
-                             alt="Motion Design" 
-                             class="w-full h-full object-cover transition-transform duration-700">
-                    </div>
-                    <div class="project-overlay absolute inset-0 bg-gradient-to-t from-black/90 via-black/50 to-transparent opacity-0 transition-opacity duration-300 flex flex-col justify-end p-6">
-                        <span class="text-secondary text-sm font-medium mb-2">Motion Graphics</span>
-                        <h3 class="font-display text-xl font-bold mb-2">Logo Animation Reel</h3>
-                        <p class="text-gray-300 text-sm mb-4">Animated logos for various clients</p>
-                        <span class="inline-flex items-center text-sm text-white group-hover:translate-x-2 transition-transform">
-                            View Story <i class="fas fa-arrow-right ml-2"></i>
-                        </span>
-                    </div>
-                </div>
             </div>
         </div>
     </section>
 
-    <!-- نافذة منبثقة لعرض تفاصيل المشروع -->
-    <div id="project-modal" class="fixed inset-0 z-50 hidden">
-        <div class="absolute inset-0 bg-black/90 backdrop-blur-sm" onclick="closeProjectModal()"></div>
-        <div class="absolute inset-0 flex items-center justify-center p-4">
-            <div class="glass-strong w-full max-w-4xl max-h-[90vh] overflow-y-auto rounded-3xl p-8 relative">
-                <button onclick="closeProjectModal()" class="absolute top-4 right-4 w-10 h-10 rounded-full glass flex items-center justify-center hover:bg-white/20 transition-colors">
-                    <i class="fas fa-times"></i>
-                </button>
-                
-                <div id="modal-content">
-                    <!-- يتم ملء المحتوى بواسطة JavaScript -->
-                </div>
+    <!-- المودال لعرض مشاريع التصنيف -->
+    <div id="categoryModal" class="category-modal">
+        <button class="close-category-modal" onclick="closeCategory()">
+            <i class="fas fa-times"></i>
+        </button>
+        
+        <div class="category-modal-content">
+            <h2 id="modalTitle" class="font-display text-4xl font-bold mb-2 text-center"></h2>
+            <p id="modalDesc" class="text-gray-400 text-center mb-12"></p>
+            
+            <div id="projectsGallery" class="projects-gallery">
+                <!-- يتم ملؤها بالJavaScript -->
             </div>
         </div>
+    </div>
+
+    <!-- Lightbox لتكبير الصور -->
+    <div id="lightbox" class="lightbox" onclick="closeLightbox()">
+        <span class="lightbox-close">&times;</span>
+        <img id="lightboxImg" src="" alt="Project">
     </div>
 
     <!-- سكشن عرض الفيديوهات -->
@@ -649,39 +761,114 @@
                 <h2 class="font-display text-4xl md:text-5xl font-bold mb-4">
                     Video <span class="text-transparent bg-clip-text bg-gradient-to-r from-secondary to-accent">Showcase</span>
                 </h2>
-                <p class="text-gray-400">Cinematic storytelling through motion</p>
+                <p class="text-gray-400">My work in editing, motion graphics and visual design</p>
             </div>
 
-            <div class="grid md:grid-cols-2 gap-8">
-                <!-- فيديو 1 -->
-                <div class="group relative rounded-2xl overflow-hidden glass reveal">
-                    <div class="aspect-video relative">
-                        <iframe class="w-full h-full" src="https://www.youtube.com/embed/dQw4w9WgXcQ?mute=1" 
-                                title="Video Project" frameborder="0" 
+            <!-- فيديو الموشن جرافيك المميز -->
+            <div class="mb-12 reveal">
+                <div class="glass rounded-3xl overflow-hidden border-2 border-secondary/30 shadow-2xl shadow-secondary/10">
+                    <div class="aspect-video relative bg-black">
+                        <iframe class="w-full h-full absolute inset-0" 
+                                src="https://www.youtube.com/embed/KPB--j_O6gY?rel=0&modestbranding=1&autoplay=0" 
+                                title="Motion Graphics Project" 
+                                frameborder="0" 
+                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                                allowfullscreen>
+                        </iframe>
+                    </div>
+                    <div class="p-8 bg-gradient-to-r from-secondary/5 to-primary/5">
+                        <div class="flex flex-wrap items-center gap-3 mb-4">
+                            <span class="px-4 py-1.5 rounded-full bg-secondary/20 text-secondary text-sm font-bold border border-secondary/30">
+                                <i class="fas fa-star mr-1"></i> Motion Graphics
+                            </span>
+                            <span class="px-4 py-1.5 rounded-full bg-red-500/20 text-red-400 text-sm font-bold border border-red-500/30">
+                                <i class="fab fa-youtube mr-1"></i> Featured Work
+                            </span>
+                        </div>
+                        <h3 class="font-display text-3xl font-bold mb-3 text-white">Professional Motion Graphics Project</h3>
+                        <p class="text-gray-300 leading-relaxed text-lg">
+                            A comprehensive motion graphics video showcasing my skills in animating graphics and visual effects. 
+                            Includes logo animation, text, and visual elements with synchronized sound effects.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- شبكة فيديوهات من قائمة التشغيل -->
+            <div class="grid md:grid-cols-2 gap-8 mb-12">
+                <div class="video-card group relative rounded-2xl overflow-hidden glass border border-white/10 reveal">
+                    <div class="aspect-video relative bg-black">
+                        <iframe class="w-full h-full absolute inset-0" 
+                                src="https://www.youtube.com/embed/6ceeJXzyGp0?rel=0&modestbranding=1" 
+                                title="Video Editing Project" 
+                                frameborder="0" 
                                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
                                 allowfullscreen>
                         </iframe>
                     </div>
                     <div class="p-6">
-                        <h3 class="font-display text-xl font-bold mb-2">Commercial Reel 2024</h3>
-                        <p class="text-gray-400 text-sm">A compilation of commercial projects showcasing color grading and editing techniques.</p>
+                        <div class="flex items-center justify-between mb-3">
+                            <span class="px-3 py-1 rounded-full bg-primary/20 text-primary text-xs font-medium border border-primary/30">
+                                <i class="fas fa-film mr-1"></i> Cinematic Edit
+                            </span>
+                            <span class="text-gray-500 text-xs"><i class="far fa-clock mr-1"></i> Full Project</span>
+                        </div>
+                        <h3 class="font-display text-xl font-bold mb-2 group-hover:text-secondary transition-colors">Professional Cinematic Editing</h3>
+                        <p class="text-gray-400 text-sm leading-relaxed mb-4">
+                            One of my editing and directing works from my complete project collection on YouTube.
+                        </p>
+                        <div class="flex items-center justify-between">
+                            <a href="https://www.youtube.com/watch?v=6ceeJXzyGp0&list=PL6pXYd0CmxdPniF5gslg8zddeJyq3Co6o" 
+                               target="_blank" 
+                               class="inline-flex items-center text-sm text-secondary hover:text-white transition-colors group">
+                                Watch in Playlist <i class="fas fa-external-link-alt ml-2 transform group-hover:translate-x-1 transition-transform"></i>
+                            </a>
+                            <i class="fab fa-youtube text-red-500 text-xl"></i>
+                        </div>
                     </div>
                 </div>
 
-                <!-- فيديو 2 -->
-                <div class="group relative rounded-2xl overflow-hidden glass reveal">
-                    <div class="aspect-video relative">
-                        <iframe class="w-full h-full" src="https://www.youtube.com/embed/dQw4w9WgXcQ?mute=1" 
-                                title="Motion Graphics" frameborder="0" 
+                <div class="video-card group relative rounded-2xl overflow-hidden glass border border-white/10 reveal">
+                    <div class="aspect-video relative bg-black">
+                        <iframe class="w-full h-full absolute inset-0" 
+                                src="https://www.youtube.com/embed/videoseries?list=PL6pXYd0CmxdPniF5gslg8zddeJyq3Co6o&index=2&rel=0" 
+                                title="Playlist Video" 
+                                frameborder="0" 
                                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
                                 allowfullscreen>
                         </iframe>
                     </div>
                     <div class="p-6">
-                        <h3 class="font-display text-xl font-bold mb-2">Motion Graphics Compilation</h3>
-                        <p class="text-gray-400 text-sm">After Effects animations and 3D motion design projects.</p>
+                        <div class="flex items-center justify-between mb-3">
+                            <span class="px-3 py-1 rounded-full bg-accent/20 text-accent text-xs font-medium border border-accent/30">
+                                <i class="fas fa-layer-group mr-1"></i> Visual Effects
+                            </span>
+                            <span class="text-gray-500 text-xs"><i class="fas fa-list-ul mr-1"></i> Playlist</span>
+                        </div>
+                        <h3 class="font-display text-xl font-bold mb-2 group-hover:text-accent transition-colors">Various Works from Playlist</h3>
+                        <p class="text-gray-400 text-sm leading-relaxed mb-4">
+                            A curated selection of my videos and works in design and editing available on my channel.
+                        </p>
+                        <div class="flex items-center justify-between">
+                            <a href="https://www.youtube.com/playlist?list=PL6pXYd0CmxdPniF5gslg8zddeJyq3Co6o" 
+                               target="_blank" 
+                               class="inline-flex items-center text-sm text-accent hover:text-white transition-colors group">
+                                View Full Playlist <i class="fas fa-play-circle ml-2 text-lg transform group-hover:scale-110 transition-transform"></i>
+                            </a>
+                            <i class="fab fa-youtube text-red-500 text-xl"></i>
+                        </div>
                     </div>
                 </div>
+            </div>
+
+            <div class="text-center reveal">
+                <a href="https://www.youtube.com/playlist?list=PL6pXYd0CmxdPniF5gslg8zddeJyq3Co6o" 
+                   target="_blank" 
+                   class="youtube-btn inline-flex items-center gap-3 px-8 py-4 rounded-full font-bold text-white shadow-lg hover:shadow-red-500/30 transition-all transform hover:-translate-y-1">
+                    <i class="fab fa-youtube text-2xl"></i>
+                    <span>Watch All Works on YouTube</span>
+                    <i class="fas fa-arrow-right ml-2"></i>
+                </a>
             </div>
         </div>
     </section>
@@ -695,7 +882,6 @@
                 </h2>
             </div>
 
-            <!-- مشروع مميز 1 -->
             <div class="mb-12 glass rounded-3xl overflow-hidden reveal">
                 <div class="grid md:grid-cols-2">
                     <div class="aspect-[4/3] md:aspect-auto overflow-hidden">
@@ -712,7 +898,6 @@
                             their image while maintaining brand recognition.
                         </p>
                         
-                        <!-- قصة المشروع: الفكرة → التنفيذ → النتيجة -->
                         <div class="space-y-4 mb-8">
                             <div class="flex gap-4">
                                 <div class="w-8 h-8 rounded-full bg-primary/20 flex items-center justify-center flex-shrink-0">
@@ -770,7 +955,6 @@
             <div class="relative max-w-4xl mx-auto reveal">
                 <div class="timeline-line"></div>
 
-                <!-- خبرة 1 -->
                 <div class="relative mb-12 md:grid md:grid-cols-2 md:gap-12 items-center">
                     <div class="md:text-right mb-4 md:mb-0 md:pr-12">
                         <span class="text-primary font-medium">2022 - Present</span>
@@ -786,7 +970,6 @@
                     <div class="absolute left-0 md:left-1/2 w-4 h-4 bg-primary rounded-full transform -translate-x-1/2 border-4 border-darker top-2"></div>
                 </div>
 
-                <!-- خبرة 2 -->
                 <div class="relative mb-12 md:grid md:grid-cols-2 md:gap-12 items-center">
                     <div class="md:order-2 md:text-left mb-4 md:mb-0 md:pl-12">
                         <span class="text-secondary font-medium">2020 - 2022</span>
@@ -802,7 +985,6 @@
                     <div class="absolute left-0 md:left-1/2 w-4 h-4 bg-secondary rounded-full transform -translate-x-1/2 border-4 border-darker top-2"></div>
                 </div>
 
-                <!-- خبرة 3 -->
                 <div class="relative md:grid md:grid-cols-2 md:gap-12 items-center">
                     <div class="md:text-right mb-4 md:mb-0 md:pr-12">
                         <span class="text-accent font-medium">2018 - 2020</span>
@@ -835,7 +1017,6 @@
                 </div>
 
                 <div class="grid md:grid-cols-3 gap-8">
-                    <!-- معلومات التواصل -->
                     <div class="md:col-span-1 space-y-6 reveal">
                         <div class="glass p-6 rounded-2xl text-center hover:border-primary/50 transition-colors border border-transparent">
                             <div class="w-12 h-12 mx-auto rounded-full bg-primary/20 flex items-center justify-center mb-4">
@@ -861,7 +1042,6 @@
                             <p class="text-gray-400 text-sm">Cairo, Egypt</p>
                         </div>
 
-                        <!-- سوشيال ميديا -->
                         <div class="flex justify-center gap-4 pt-4">
                             <a href="https://www.behance.net/eiabdgaming" class="w-10 h-10 rounded-full glass flex items-center justify-center hover:bg-primary hover:text-white transition-all">
                                 <i class="fab fa-behance"></i>
@@ -869,16 +1049,15 @@
                             <a href="#" class="w-10 h-10 rounded-full glass flex items-center justify-center hover:bg-secondary hover:text-white transition-all">
                                 <i class="fab fa-dribbble"></i>
                             </a>
-                            <a href="https://www.instagram.com/3bdo_mo7amed_sa3d?igsh=MWNvOGh2ejVhbGNsNw==" class="w-10 h-10 rounded-full glass flex items-center justify-center hover:bg-accent hover:text-white transition-all">
+                            <a href="https://www.instagram.com/3bdo_mo7amed_sa3d" class="w-10 h-10 rounded-full glass flex items-center justify-center hover:bg-accent hover:text-white transition-all">
                                 <i class="fab fa-instagram"></i>
                             </a>
-                            <a href="https://www.linkedin.com/in/abdo-mohamed-b20a16312?utm_source=share_via&utm_content=profile&utm_medium=member_android" class="w-10 h-10 rounded-full glass flex items-center justify-center hover:bg-blue-600 hover:text-white transition-all">
+                            <a href="https://www.linkedin.com/in/abdo-mohamed-b20a16312" class="w-10 h-10 rounded-full glass flex items-center justify-center hover:bg-blue-600 hover:text-white transition-all">
                                 <i class="fab fa-linkedin-in"></i>
                             </a>
                         </div>
                     </div>
 
-                    <!-- نموذج التواصل -->
                     <div class="md:col-span-2 reveal">
                         <form class="glass p-8 rounded-3xl space-y-6" onsubmit="handleSubmit(event)">
                             <div class="grid md:grid-cols-2 gap-6">
@@ -936,15 +1115,184 @@
 
     <script>
         /* ==========================================
-           نظام إدارة المشاريع - كيفية إضافة مشروع جديد:
-           
-           لإضافة مشروع جديد:
-           1. انسخ div مع class="project-card" في سكشن البورتفوليو
-           2. غير data-category حسب النوع: graphic, video, motion, ui
-           3. غير رقم onclick="openProjectModal(رقم_جديد)"
-           4. أضف بيانات المشروع في object projectsData بالأسفل
+           بيانات المشاريع حسب التصنيف
            ========================================== */
+        const portfolioData = {
+            graphic: {
+                title: "Graphic Design",
+                description: "Creative graphic designs including visual identities, posters, and logos",
+                projects: [
+                    {
+                        title: "Brand Identity - Eidos",
+                        image: "https://images.unsplash.com/photo-1626785774625-0b1c2c4eab67?w=600&h=450&fit=crop",
+                        desc: "Complete visual identity for a tech company"
+                    },
+                    {
+                        title: "Social Media Campaign",
+                        image: "https://images.unsplash.com/photo-1611162617474-5b21e879e113?w=600&h=450&fit=crop",
+                        desc: "Social media campaign for a new product"
+                    },
+                    {
+                        title: "Logo Design Collection",
+                        image: "https://images.unsplash.com/photo-1626785774573-4b799315345d?w=600&h=450&fit=crop",
+                        desc: "Collection of logo designs"
+                    },
+                    {
+                        title: "Print Design",
+                        image: "https://images.unsplash.com/photo-1561070791-2526d30994b5?w=600&h=450&fit=crop",
+                        desc: "Print design materials"
+                    },
+                    {
+                        title: "Packaging Design",
+                        image: "https://images.unsplash.com/photo-1634942537034-2531766767d1?w=600&h=450&fit=crop",
+                        desc: "Product packaging design"
+                    },
+                    {
+                        title: "Poster Design",
+                        image: "https://images.unsplash.com/photo-1572044162444-ad60f128bdea?w=600&h=450&fit=crop",
+                        desc: "Advertising poster"
+                    }
+                ]
+            },
+            motion: {
+                title: "Motion Graphics",
+                description: "Motion graphics and visual animation works",
+                projects: [
+                    {
+                        title: "Logo Animation",
+                        image: "https://images.unsplash.com/photo-1550745165-9bc0b252726f?w=600&h=450&fit=crop",
+                        desc: "Company logo animation"
+                    },
+                    {
+                        title: "Product Promo",
+                        image: "https://images.unsplash.com/photo-1536240478700-b869070f9279?w=600&h=450&fit=crop",
+                        desc: "Product promotional video"
+                    },
+                    {
+                        title: "Title Sequence",
+                        image: "https://images.unsplash.com/photo-1574717024653-61fd2cf4d44d?w=600&h=450&fit=crop",
+                        desc: "Professional video intro"
+                    },
+                    {
+                        title: "Explainer Video",
+                        image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=600&h=450&fit=crop",
+                        desc: "Service explainer video"
+                    }
+                ]
+            },
+            video: {
+                title: "Video Editing",
+                description: "Cinematic editing and production works",
+                projects: [
+                    {
+                        title: "Commercial Ad",
+                        image: "https://images.unsplash.com/photo-1574717024653-61fd2cf4d44d?w=600&h=450&fit=crop",
+                        desc: "Short commercial advertisement"
+                    },
+                    {
+                        title: "Documentary",
+                        image: "https://images.unsplash.com/photo-1492691527719-9d1e07e534b4?w=600&h=450&fit=crop",
+                        desc: "Short documentary film"
+                    },
+                    {
+                        title: "Music Video",
+                        image: "https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?w=600&h=450&fit=crop",
+                        desc: "Music video clip"
+                    },
+                    {
+                        title: "Event Coverage",
+                        image: "https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=600&h=450&fit=crop",
+                        desc: "Event coverage"
+                    },
+                    {
+                        title: "Interview Edit",
+                        image: "https://images.unsplash.com/photo-1552664730-d307ca884978?w=600&h=450&fit=crop",
+                        desc: "Journalistic interview"
+                    }
+                ]
+            },
+            ui: {
+                title: "UI/UX Design",
+                description: "User interface designs for apps and websites",
+                projects: [
+                    {
+                        title: "Mobile App Design",
+                        image: "https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?w=600&h=450&fit=crop",
+                        desc: "Mobile application design"
+                    },
+                    {
+                        title: "Dashboard UI",
+                        image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=600&h=450&fit=crop",
+                        desc: "Analytics dashboard"
+                    },
+                    {
+                        title: "Website Redesign",
+                        image: "https://images.unsplash.com/photo-1547658719-da2b51169166?w=600&h=450&fit=crop",
+                        desc: "Website redesign"
+                    }
+                ]
+            }
+        };
 
+        // فتح التصنيف وعرض مشاريعه
+        function openCategory(category) {
+            const modal = document.getElementById('categoryModal');
+            const data = portfolioData[category];
+            
+            document.getElementById('modalTitle').textContent = data.title;
+            document.getElementById('modalDesc').textContent = data.description;
+            
+            const gallery = document.getElementById('projectsGallery');
+            gallery.innerHTML = '';
+            
+            data.projects.forEach((project, index) => {
+                const item = document.createElement('div');
+                item.className = 'project-item glass';
+                item.innerHTML = `
+                    <img src="${project.image}" alt="${project.title}" loading="lazy" onclick="openLightbox('${project.image}')">
+                    <div class="project-item-overlay">
+                        <div class="text-center p-4">
+                            <h4 class="font-bold text-lg mb-2">${project.title}</h4>
+                            <p class="text-sm text-gray-300 mb-3">${project.desc}</p>
+                            <button class="px-4 py-2 bg-primary rounded-full text-sm hover:bg-primary/80 transition-colors">
+                                <i class="fas fa-search-plus mr-1"></i> View
+                            </button>
+                        </div>
+                    </div>
+                `;
+                gallery.appendChild(item);
+                
+                gsap.from(item, {
+                    opacity: 0,
+                    y: 30,
+                    duration: 0.5,
+                    delay: index * 0.1
+                });
+            });
+            
+            modal.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        // إغلاق المودال
+        function closeCategory() {
+            document.getElementById('categoryModal').classList.remove('active');
+            document.body.style.overflow = 'auto';
+        }
+
+        // Lightbox
+        function openLightbox(src) {
+            document.getElementById('lightboxImg').src = src;
+            document.getElementById('lightbox').classList.add('active');
+        }
+
+        function closeLightbox() {
+            document.getElementById('lightbox').classList.remove('active');
+        }
+
+        /* ==========================================
+           نظام إدارة المشاريع القديم (للـ Featured Projects)
+           ========================================== */
         const projectsData = {
             1: {
                 title: "Brand Identity System",
@@ -1003,121 +1351,26 @@
         };
 
         /* ==========================================
-           نظام الفلترة - فلترة المشاريع حسب النوع
-           ========================================== */
-        const filterBtns = document.querySelectorAll('.filter-btn');
-        const projectCards = document.querySelectorAll('.project-card');
-
-        filterBtns.forEach(btn => {
-            btn.addEventListener('click', () => {
-                // إزالة النشاط من جميع الأزرار
-                filterBtns.forEach(b => {
-                    b.classList.remove('active');
-                    b.classList.add('text-gray-400');
-                });
-                // إضافة النشاط للزر المضغوط
-                btn.classList.add('active');
-                btn.classList.remove('text-gray-400');
-
-                const filter = btn.getAttribute('data-filter');
-
-                projectCards.forEach(card => {
-                    if (filter === 'all' || card.getAttribute('data-category') === filter) {
-                        card.style.display = 'block';
-                        gsap.fromTo(card, {opacity: 0, y: 20}, {opacity: 1, y: 0, duration: 0.5});
-                    } else {
-                        card.style.display = 'none';
-                    }
-                });
-            });
-        });
-
-        /* ==========================================
-           نافذة تفاصيل المشروع - Modal
-           ========================================== */
-        function openProjectModal(projectId) {
-            const project = projectsData[projectId];
-            if (!project) return;
-
-            const modal = document.getElementById('project-modal');
-            const content = document.getElementById('modal-content');
-
-            content.innerHTML = `
-                <img src="${project.image}" alt="${project.title}" class="w-full h-64 object-cover rounded-2xl mb-6">
-                <span class="text-primary font-medium text-sm uppercase tracking-wider">${project.category}</span>
-                <h2 class="font-display text-3xl font-bold mt-2 mb-6">${project.title}</h2>
-                
-                <div class="space-y-6">
-                    <div class="border-l-2 border-primary pl-4">
-                        <h3 class="font-semibold text-lg mb-2 flex items-center gap-2">
-                            <i class="fas fa-lightbulb text-primary"></i> The Idea
-                        </h3>
-                        <p class="text-gray-400 leading-relaxed">${project.concept}</p>
-                    </div>
-                    
-                    <div class="border-l-2 border-secondary pl-4">
-                        <h3 class="font-semibold text-lg mb-2 flex items-center gap-2">
-                            <i class="fas fa-cogs text-secondary"></i> The Process
-                        </h3>
-                        <p class="text-gray-400 leading-relaxed">${project.process}</p>
-                    </div>
-                    
-                    <div class="border-l-2 border-accent pl-4">
-                        <h3 class="font-semibold text-lg mb-2 flex items-center gap-2">
-                            <i class="fas fa-trophy text-accent"></i> The Result
-                        </h3>
-                        <p class="text-gray-400 leading-relaxed">${project.result}</p>
-                    </div>
-                </div>
-
-                <div class="mt-8 pt-6 border-t border-white/10">
-                    <h4 class="font-semibold mb-3">Tools Used</h4>
-                    <div class="flex flex-wrap gap-2">
-                        ${project.tools.map(tool => `
-                            <span class="px-3 py-1 rounded-full glass text-sm text-gray-300">${tool}</span>
-                        `).join('')}
-                    </div>
-                </div>
-            `;
-
-            modal.classList.remove('hidden');
-            document.body.style.overflow = 'hidden';
-        }
-
-        function closeProjectModal() {
-            const modal = document.getElementById('project-modal');
-            modal.classList.add('hidden');
-            document.body.style.overflow = 'auto';
-        }
-
-        /* ==========================================
-           تأثيرات GSAP والرسوم المتحركة عند التمرير
+           تأثيرات GSAP
            ========================================== */
         gsap.registerPlugin(ScrollTrigger);
 
-        // تأثير الظهور التدريجي للعناصر
         gsap.utils.toArray('.reveal').forEach(element => {
-            gsap.fromTo(element, 
-                { opacity: 0, y: 50 },
-                {
-                    opacity: 1,
-                    y: 0,
-                    duration: 1,
-                    ease: "power3.out",
-                    scrollTrigger: {
-                        trigger: element,
-                        start: "top 85%",
-                        toggleActions: "play none none reverse"
-                    }
+            gsap.to(element, {
+                opacity: 1,
+                y: 0,
+                duration: 1,
+                ease: "power3.out",
+                scrollTrigger: {
+                    trigger: element,
+                    start: "top 85%"
                 }
-            );
+            });
         });
 
-        // رسوم متحركة لأشرطة المهارات
         gsap.utils.toArray('.skill-bar').forEach(bar => {
-            const width = bar.getAttribute('data-width');
             gsap.to(bar, {
-                width: width,
+                width: bar.getAttribute('data-width'),
                 duration: 1.5,
                 ease: "power2.out",
                 scrollTrigger: {
@@ -1127,7 +1380,6 @@
             });
         });
 
-        // تأثير النصوص في الهيرو
         gsap.from(".reveal-text", {
             y: 100,
             opacity: 0,
@@ -1138,7 +1390,7 @@
         });
 
         /* ==========================================
-           نظام الجسيمات في الخلفية - Canvas
+           نظام الجسيمات
            ========================================== */
         const canvas = document.getElementById('particles-canvas');
         const ctx = canvas.getContext('2d');
@@ -1160,17 +1412,14 @@
                 this.speedY = Math.random() * 1 - 0.5;
                 this.opacity = Math.random() * 0.5 + 0.2;
             }
-
             update() {
                 this.x += this.speedX;
                 this.y += this.speedY;
-
                 if (this.x > canvas.width) this.x = 0;
                 if (this.x < 0) this.x = canvas.width;
                 if (this.y > canvas.height) this.y = 0;
                 if (this.y < 0) this.y = canvas.height;
             }
-
             draw() {
                 ctx.fillStyle = `rgba(139, 92, 246, ${this.opacity})`;
                 ctx.beginPath();
@@ -1190,13 +1439,10 @@
 
         function animateParticles() {
             ctx.clearRect(0, 0, canvas.width, canvas.height);
-            
             particles.forEach(particle => {
                 particle.update();
                 particle.draw();
             });
-
-            // رسم خطوط بين الجسيمات القريبة
             particles.forEach((a, index) => {
                 particles.slice(index + 1).forEach(b => {
                     const distance = Math.sqrt((a.x - b.x) ** 2 + (a.y - b.y) ** 2);
@@ -1210,13 +1456,12 @@
                     }
                 });
             });
-
             requestAnimationFrame(animateParticles);
         }
         animateParticles();
 
         /* ==========================================
-           المؤشر المخصص - Custom Cursor
+           المؤشر المخصص
            ========================================== */
         const cursor = document.getElementById('cursor');
         const cursorDot = document.getElementById('cursor-dot');
@@ -1226,17 +1471,10 @@
             gsap.to(cursorDot, { x: e.clientX - 2, y: e.clientY - 2, duration: 0.5 });
         });
 
-        document.addEventListener('mousedown', () => {
-            cursor.style.transform = 'scale(0.8)';
-        });
+        document.addEventListener('mousedown', () => cursor.style.transform = 'scale(0.8)');
+        document.addEventListener('mouseup', () => cursor.style.transform = 'scale(1)');
 
-        document.addEventListener('mouseup', () => {
-            cursor.style.transform = 'scale(1)';
-        });
-
-        // تأثير المؤشر على الروابط والأزرار
-        const clickables = document.querySelectorAll('a, button, .project-card');
-        clickables.forEach(el => {
+        document.querySelectorAll('a, button, .category-card, .project-card').forEach(el => {
             el.addEventListener('mouseenter', () => {
                 cursor.style.transform = 'scale(1.5)';
                 cursor.style.borderColor = '#06b6d4';
@@ -1248,10 +1486,8 @@
         });
 
         /* ==========================================
-           شريط التنقل والتنقلات الأخرى
+           شريط التنقل
            ========================================== */
-        
-        // تغيير شكل النافبار عند التمرير
         const navbar = document.getElementById('navbar');
         window.addEventListener('scroll', () => {
             if (window.scrollY > 50) {
@@ -1260,7 +1496,6 @@
                 navbar.classList.remove('shadow-lg', 'bg-dark/90');
             }
 
-            // زر العودة للأعلى
             const backToTop = document.getElementById('back-to-top');
             if (window.scrollY > 500) {
                 backToTop.classList.remove('opacity-0', 'pointer-events-none');
@@ -1273,7 +1508,6 @@
             window.scrollTo({ top: 0, behavior: 'smooth' });
         });
 
-        // القائمة المتنقلة
         const mobileMenuBtn = document.getElementById('mobile-menu-btn');
         const mobileMenu = document.getElementById('mobile-menu');
         
@@ -1281,7 +1515,6 @@
             mobileMenu.classList.toggle('hidden');
         });
 
-        // إغلاق القائمة عند النقر على رابط
         mobileMenu.querySelectorAll('a').forEach(link => {
             link.addEventListener('click', () => {
                 mobileMenu.classList.add('hidden');
@@ -1289,7 +1522,7 @@
         });
 
         /* ==========================================
-           تبديل الوضع المظلم/الفاتح
+           تبديل الوضع
            ========================================== */
         const themeToggle = document.getElementById('theme-toggle');
         const themeIcon = document.getElementById('theme-icon');
@@ -1315,7 +1548,7 @@
         });
 
         /* ==========================================
-           شاشة التحميل - Loading Screen
+           شاشة التحميل
            ========================================== */
         window.addEventListener('load', () => {
             const loader = document.getElementById('loader');
@@ -1347,12 +1580,11 @@
         });
 
         /* ==========================================
-           معالجة نموذج التواصل
+           معالجة النموذج
            ========================================== */
         function handleSubmit(e) {
             e.preventDefault();
             
-            // هنا يمكنك إضافة كود إرسال البيانات للخادم
             const btn = e.target.querySelector('button');
             const originalText = btn.innerHTML;
             
@@ -1366,7 +1598,6 @@
             }, 3000);
         }
 
-        // تمرير سلس للروابط
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 e.preventDefault();
@@ -1377,30 +1608,12 @@
             });
         });
 
-        /* ==========================================
-           تأثيرات إضافية للتفاعل
-           ========================================== */
-        
-        // تباين الأقسام أثناء التمرير
-        const sections = document.querySelectorAll('section');
-        const navLinks = document.querySelectorAll('.nav-link');
-
-        window.addEventListener('scroll', () => {
-            let current = '';
-            sections.forEach(section => {
-                const sectionTop = section.offsetTop;
-                const sectionHeight = section.clientHeight;
-                if (scrollY >= sectionTop - 200) {
-                    current = section.getAttribute('id');
-                }
-            });
-
-            navLinks.forEach(link => {
-                link.classList.remove('text-white');
-                if (link.getAttribute('href').slice(1) === current) {
-                    link.classList.add('text-white');
-                }
-            });
+        // إغلاق بالـ ESC
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') {
+                closeCategory();
+                closeLightbox();
+            }
         });
     </script>
 </body>
