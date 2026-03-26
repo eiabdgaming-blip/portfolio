@@ -225,7 +225,7 @@
             box-shadow: 0 10px 30px rgba(255, 0, 0, 0.3);
         }
 
-        /* ====== أنماط التصنيفات الجديدة ====== */
+        /* ====== أنماط التصنيفات الرئيسية ====== */
         .category-card {
             position: relative;
             overflow: hidden;
@@ -267,50 +267,140 @@
             background: linear-gradient(to top, rgba(139, 92, 246, 0.9) 0%, rgba(0,0,0,0.5) 100%);
         }
 
-        .projects-gallery {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-            gap: 1.5rem;
-            padding: 1rem 0;
+        /* ====== أنماط المجموعات الفرعية الجديدة - MODERN CARD DESIGN ====== */
+        .modern-group-card {
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 24px;
+            overflow: hidden;
+            cursor: pointer;
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+            display: flex;
+            flex-direction: column;
         }
 
-        .project-item {
+        .modern-group-card:hover {
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 0 25px 50px -12px rgba(139, 92, 246, 0.4);
+            border-color: rgba(139, 92, 246, 0.3);
+        }
+
+        .modern-group-card .card-image-wrapper {
+            position: relative;
+            width: 100%;
+            aspect-ratio: 16/10;
+            overflow: hidden;
+        }
+
+        .modern-group-card img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.7s ease;
+        }
+
+        .modern-group-card:hover img {
+            transform: scale(1.1);
+        }
+
+        .modern-group-card .card-content {
+            padding: 1.5rem;
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+        }
+
+        .modern-group-card .card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            gap: 1rem;
+        }
+
+        .modern-group-card .card-title {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #ffffff;
+            margin: 0;
+        }
+
+        .modern-group-card .photo-badge {
+            background: rgba(139, 92, 246, 0.2);
+            color: #8b5cf6;
+            padding: 0.25rem 0.75rem;
+            border-radius: 9999px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            white-space: nowrap;
+            border: 1px solid rgba(139, 92, 246, 0.3);
+        }
+
+        .modern-group-card .card-description {
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 0.875rem;
+            line-height: 1.5;
+            margin: 0;
+        }
+
+        .modern-group-card .view-gallery {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: #8b5cf6;
+            font-weight: 600;
+            font-size: 0.875rem;
+            margin-top: 0.5rem;
+            transition: all 0.3s ease;
+        }
+
+        .modern-group-card:hover .view-gallery {
+            color: #06b6d4;
+            gap: 0.75rem;
+        }
+
+        .modern-group-card .view-gallery i {
+            transition: transform 0.3s ease;
+        }
+
+        .modern-group-card:hover .view-gallery i {
+            transform: translateX(4px);
+        }
+
+        /* ====== أنماط شبكة الصور داخل المجموعة ====== */
+        .images-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 1.5rem;
+            padding: 2rem;
+        }
+
+        .image-item {
             position: relative;
             border-radius: 16px;
             overflow: hidden;
             aspect-ratio: 4/3;
-            cursor: pointer;
-            transition: transform 0.3s;
+            cursor: zoom-in;
             background: rgba(255,255,255,0.05);
+            border: 1px solid rgba(255,255,255,0.1);
+            transition: all 0.3s;
         }
 
-        .project-item:hover {
+        .image-item:hover {
             transform: scale(1.05);
-            z-index: 10;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.5);
+            border-color: rgba(139, 92, 246, 0.5);
         }
 
-        .project-item img {
+        .image-item img {
             width: 100%;
             height: 100%;
             object-fit: cover;
         }
 
-        .project-item-overlay {
-            position: absolute;
-            inset: 0;
-            background: rgba(0,0,0,0.7);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            opacity: 0;
-            transition: opacity 0.3s;
-        }
-
-        .project-item:hover .project-item-overlay {
-            opacity: 1;
-        }
-
-        .category-modal {
+        /* ====== المودال العام ====== */
+        .modal {
             display: none;
             position: fixed;
             inset: 0;
@@ -320,7 +410,7 @@
             overflow-y: auto;
         }
 
-        .category-modal.active {
+        .modal.active {
             display: block;
             animation: fadeIn 0.3s;
         }
@@ -330,13 +420,7 @@
             to { opacity: 1; }
         }
 
-        .category-modal-content {
-            max-width: 1200px;
-            margin: 2rem auto;
-            padding: 2rem;
-        }
-
-        .close-category-modal {
+        .close-modal {
             position: fixed;
             top: 2rem;
             right: 2rem;
@@ -355,11 +439,35 @@
             justify-content: center;
         }
 
-        .close-category-modal:hover {
+        .close-modal:hover {
             background: #ef4444;
             transform: rotate(90deg);
         }
 
+        .back-button {
+            position: fixed;
+            top: 2rem;
+            left: 2rem;
+            padding: 12px 24px;
+            background: rgba(139, 92, 246, 0.2);
+            border: 1px solid rgba(139, 92, 246, 0.5);
+            color: white;
+            border-radius: 30px;
+            cursor: pointer;
+            transition: all 0.3s;
+            z-index: 1001;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-weight: 600;
+        }
+
+        .back-button:hover {
+            background: rgba(139, 92, 246, 0.4);
+            transform: translateX(-5px);
+        }
+
+        /* ====== لايت بوكس متقدم ====== */
         .lightbox {
             display: none;
             position: fixed;
@@ -368,6 +476,7 @@
             background: rgba(0,0,0,0.98);
             justify-content: center;
             align-items: center;
+            flex-direction: column;
         }
 
         .lightbox.active {
@@ -376,7 +485,7 @@
 
         .lightbox img {
             max-width: 90%;
-            max-height: 90vh;
+            max-height: 85vh;
             border-radius: 8px;
             box-shadow: 0 25px 50px -12px rgba(0,0,0,0.5);
         }
@@ -388,8 +497,48 @@
             color: white;
             font-size: 3rem;
             cursor: pointer;
+            z-index: 2001;
+        }
+
+        .lightbox-nav {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(255,255,255,0.1);
+            border: none;
+            color: white;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 1.5rem;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .lightbox-nav:hover {
+            background: rgba(139, 92, 246, 0.5);
+        }
+
+        .lightbox-prev { left: 20px; }
+        .lightbox-next { right: 20px; }
+
+        .image-counter {
+            position: absolute;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: rgba(0,0,0,0.7);
+            padding: 8px 20px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            color: white;
         }
     </style>
+<base target="_blank">
+<base target="_blank">
 <base target="_blank">
 </head>
 <body class="antialiased selection:bg-primary selection:text-white">
@@ -647,7 +796,59 @@
         </div>
     </section>
 
-    <!-- سكشن البورتفوليو - نظام التصنيفات الجديد -->
+    <!-- 
+    ==========================================
+    سكشن Selected Works - المعدل
+    ==========================================
+    التعديلات:
+    1. تم حذف Motion Graphics و Video Editing
+    2. تبقى قسمين فقط: Graphic Design و UI/UX Design
+    3. عند الضغط على أي قسم يفتح مودال يعرض المجموعات الفرعية (Groups)
+    4. عند الضغط على المجموعة الفرعية يفتح مودال آخر يعرض الصور
+    
+    شرح إضافة محتوى جديد:
+    =====================
+    
+    A. إضافة مجموعة فرعية جديدة داخل Graphic Design:
+       1. افتح ملف index.html في محرر النصوص
+       2. ابحث عن "portfolioData" في JavaScript (أسفل الصفحة)
+       3. داخل "graphic" -> "groups" أضف كائن جديد:
+       
+       groupName: {
+           title: "عنوان المجموعة",
+           description: "وصف المجموعة",
+           cover: "مسار-صورة-الغلاف.jpg",
+           images: [
+               "مسار/الصورة/الاولى.jpg",
+               "مسار/الصورة/الثانية.jpg"
+           ]
+       }
+       
+    B. هيكل مجلدات المشروع المقترح:
+       📁 مشروعك/
+       ├── 📄 index.html
+       ├── 📁 projects/
+       │   ├── 📁 graphic-design/
+       │   │   ├── 📁 eidos/
+       │   │   │   ├── 📄 cover.jpg (صورة الغلاف)
+       │   │   │   ├── 📄 img1.jpg
+       │   │   │   └── 📄 img2.jpg
+       │   │   └── 📁 social-media/
+       │   │       ├── 📄 cover.jpg
+       │   │       └── 📄 ...
+       │   └── 📁 ui-ux/
+       │       ├── 📁 fintech-app/
+       │       │   ├── 📄 cover.jpg
+       │       │   └── 📄 ...
+       │       └── 📁 dashboard/
+       │           ├── 📄 cover.jpg
+       │           └── 📄 ...
+       └── 📁 assets/
+       
+    C. لإضافة قسم رئيسي جديد:
+       1. أضف البيانات في portfolioData
+       2. أضف البطاقة في HTML داخل شبكة الأقسام
+    -->
     <section id="portfolio" class="py-20 md:py-32 relative">
         <div class="absolute inset-0 bg-gradient-to-b from-transparent via-primary/5 to-transparent"></div>
         
@@ -657,11 +858,15 @@
                     Selected <span class="text-transparent bg-clip-text bg-gradient-to-r from-primary to-secondary">Works</span>
                 </h2>
                 <p class="text-gray-400 max-w-2xl mx-auto">
-                    Click on any category to view all related projects
+                    Click on any category to view groups of projects
                 </p>
             </div>
 
-            <!-- شبكة التصنيفات 2x2 -->
+            <!-- 
+            شبكة الأقسام الرئيسية - 2x1 (قسمين فقط)
+            قسم 1: Graphic Design
+            قسم 2: UI/UX Design
+            -->
             <div class="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">
                 
                 <!-- 1. Graphic Design -->
@@ -669,59 +874,27 @@
                     <img src="https://images.unsplash.com/photo-1626785774625-0b1c2c4eab67?w=800&h=600&fit=crop" alt="Graphic Design">
                     <div class="category-overlay">
                         <div>
-                            <span class="text-primary text-sm font-bold tracking-wider mb-2 block">6 Projects</span>
+                            <span class="text-primary text-sm font-bold tracking-wider mb-2 block" id="graphic-count">Multiple Groups</span>
                             <h3 class="font-display text-3xl font-bold mb-2">Graphic Design</h3>
                             <p class="text-gray-300 text-sm mb-4 opacity-80">Brand identities, posters, and visual designs</p>
                             <div class="flex items-center text-primary font-semibold">
-                                <span>View Projects</span>
+                                <span>View Groups</span>
                                 <i class="fas fa-arrow-right ml-2"></i>
                             </div>
                         </div>
                     </div>
                 </div>
 
-                <!-- 2. Motion Graphics -->
-                <div class="category-card reveal" onclick="openCategory('motion')">
-                    <img src="https://images.unsplash.com/photo-1550745165-9bc0b252726f?w=800&h=600&fit=crop" alt="Motion Graphics">
-                    <div class="category-overlay">
-                        <div>
-                            <span class="text-secondary text-sm font-bold tracking-wider mb-2 block">4 Projects</span>
-                            <h3 class="font-display text-3xl font-bold mb-2">Motion Graphics</h3>
-                            <p class="text-gray-300 text-sm mb-4 opacity-80">Animations and visual effects</p>
-                            <div class="flex items-center text-secondary font-semibold">
-                                <span>View Projects</span>
-                                <i class="fas fa-arrow-right ml-2"></i>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- 3. Video Editing -->
-                <div class="category-card reveal" onclick="openCategory('video')">
-                    <img src="https://images.unsplash.com/photo-1574717024653-61fd2cf4d44d?w=800&h=600&fit=crop" alt="Video Editing">
-                    <div class="category-overlay">
-                        <div>
-                            <span class="text-accent text-sm font-bold tracking-wider mb-2 block">5 Projects</span>
-                            <h3 class="font-display text-3xl font-bold mb-2">Video Editing</h3>
-                            <p class="text-gray-300 text-sm mb-4 opacity-80">Cinematic editing and production</p>
-                            <div class="flex items-center text-accent font-semibold">
-                                <span>View Projects</span>
-                                <i class="fas fa-arrow-right ml-2"></i>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- 4. UI/UX Design -->
+                <!-- 2. UI/UX Design -->
                 <div class="category-card reveal" onclick="openCategory('ui')">
                     <img src="https://images.unsplash.com/photo-1561070791-2526d30994b5?w=800&h=600&fit=crop" alt="UI/UX Design">
                     <div class="category-overlay">
                         <div>
-                            <span class="text-primary text-sm font-bold tracking-wider mb-2 block">3 Projects</span>
+                            <span class="text-secondary text-sm font-bold tracking-wider mb-2 block" id="ui-count">Multiple Groups</span>
                             <h3 class="font-display text-3xl font-bold mb-2">UI/UX Design</h3>
                             <p class="text-gray-300 text-sm mb-4 opacity-80">User interfaces and experiences</p>
-                            <div class="flex items-center text-primary font-semibold">
-                                <span>View Projects</span>
+                            <div class="flex items-center text-secondary font-semibold">
+                                <span>View Groups</span>
                                 <i class="fas fa-arrow-right ml-2"></i>
                             </div>
                         </div>
@@ -732,26 +905,74 @@
         </div>
     </section>
 
-    <!-- المودال لعرض مشاريع التصنيف -->
-    <div id="categoryModal" class="category-modal">
-        <button class="close-category-modal" onclick="closeCategory()">
+    <!-- ==================== المودال الأول: عرض المجموعات الفرعية (UPDATED WITH MODERN CARDS) ==================== -->
+    <!-- 
+    هذا المودال يظهر عند الضغط على قسم رئيسي (مثل Graphic Design)
+    يعرض شبكة من البطاقات الحديثة، كل بطاقة تمثل مجموعة فرعية
+    -->
+    <div id="groupsModal" class="modal">
+        <button class="close-modal" onclick="closeGroupsModal()">
             <i class="fas fa-times"></i>
         </button>
         
-        <div class="category-modal-content">
-            <h2 id="modalTitle" class="font-display text-4xl font-bold mb-2 text-center"></h2>
-            <p id="modalDesc" class="text-gray-400 text-center mb-12"></p>
+        <div class="container mx-auto px-6 py-20">
+            <h2 id="groupsModalTitle" class="font-display text-4xl font-bold mb-2 text-center"></h2>
+            <p id="groupsModalDesc" class="text-gray-400 text-center mb-12"></p>
             
-            <div id="projectsGallery" class="projects-gallery">
-                <!-- يتم ملؤها بالJavaScript -->
+            <!-- شبكة المجموعات الفرعية - Modern Grid -->
+            <div id="groupsGrid" class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
+                <!-- يتم ملؤها ديناميكياً بواسطة JavaScript -->
             </div>
         </div>
     </div>
 
-    <!-- Lightbox لتكبير الصور -->
-    <div id="lightbox" class="lightbox" onclick="closeLightbox()">
-        <span class="lightbox-close">&times;</span>
-        <img id="lightboxImg" src="" alt="Project">
+    <!-- ==================== المودال الثاني: عرض صور المجموعة ==================== -->
+    <!-- 
+    هذا المودال يظهر عند الضغط على مجموعة فرعية
+    يعرض شبكة من الصور، وعند الضغط على أي صورة تفتح في اللايت بوكس
+    -->
+    <div id="imagesModal" class="modal">
+        <button class="close-modal" onclick="closeImagesModal()">
+            <i class="fas fa-times"></i>
+        </button>
+        
+        <!-- زر الرجوع للمجموعات -->
+        <button class="back-button" onclick="backToGroups()">
+            <i class="fas fa-arrow-left"></i>
+            <span>Back to Groups</span>
+        </button>
+        
+        <div class="container mx-auto px-6 py-20">
+            <h2 id="imagesModalTitle" class="font-display text-3xl font-bold mb-2 text-center"></h2>
+            <p id="imagesModalDesc" class="text-gray-400 text-center mb-8"></p>
+            
+            <!-- شبكة الصور -->
+            <div id="imagesGrid" class="images-grid max-w-6xl mx-auto">
+                <!-- يتم ملؤها ديناميكياً بواسطة JavaScript -->
+            </div>
+        </div>
+    </div>
+
+    <!-- ==================== اللايت بوكس: عرض الصورة بحجم كبير مع إمكانية التنقل ==================== -->
+    <!-- 
+    يظهر عند الضغط على أي صورة داخل مودال الصور
+    يحتوي على:
+    - زر إغلاق (X) في الأعلى
+    - أسهم للتنقل بين الصور (< >)
+    - عداد يظهر رقم الصورة الحالية / العدد الكلي
+    -->
+    <div id="lightbox" class="lightbox">
+        <span class="lightbox-close" onclick="closeLightbox()">&times;</span>
+        <button class="lightbox-nav lightbox-prev" onclick="changeImage(-1)">
+            <i class="fas fa-chevron-left"></i>
+        </button>
+        <img id="lightboxImg" src="" alt="Project Image">
+        <button class="lightbox-nav lightbox-next" onclick="changeImage(1)">
+            <i class="fas fa-chevron-right"></i>
+        </button>
+        <div class="image-counter">
+            <span id="currentImg">1</span> / <span id="totalImg">5</span>
+        </div>
     </div>
 
     <!-- سكشن عرض الفيديوهات -->
@@ -1108,161 +1329,190 @@
                 © 2024 Creative Portfolio. All rights reserved.
             </p>
             <p class="text-gray-600 text-sm">
-                Designed by portfolio owners<i class="fas fa-heart text-accent mx-1"></i> (@3bdo_mo7amed_sa3d)
+                Designed by portfolio owners <i class="fas fa-heart text-accent mx-1"></i> (@3bdo_mo7amed_sa3d)
             </p>
         </div>
     </footer>
 
     <script>
-        /* ==========================================
-           بيانات المشاريع حسب التصنيف
-           ========================================== */
+        /* 
+        ==========================================
+        بيانات المحفظة - نظام المجموعات المتداخلة
+        ==========================================
+        
+        الهيكل:
+        القسم الرئيسي (Category) -> المجموعة الفرعية (Group) -> الصور (Images)
+        
+        لإضافة مجموعة جديدة داخل Graphic Design:
+        1. انسخ قالب المجموعة وألصقه داخل "graphic.groups"
+        2. غير المفتاح (مثل: myNewGroup)
+        3. عدل العنوان والوصف والمسارات
+        
+        قالب المجموعة:
+        ----------------
+        uniqueKey: {
+            title: "عنوان المجموعة",
+            description: "وصف المجموعة",
+            cover: "projects/graphic-design/مجلد-المجموعة/cover.jpg",
+            images: [
+                "projects/graphic-design/مجلد-المجموعة/صورة1.jpg",
+                "projects/graphic-design/مجلد-المجموعة/صورة2.jpg",
+                "projects/graphic-design/مجلد-المجموعة/صورة3.jpg"
+            ]
+        }
+        */
+        
         const portfolioData = {
-            graphic: {
-                title: "Graphic Design",
-                description: "Creative graphic designs including visual identities, posters, and logos",
-                projects: [
-                    {
-                        title: "Brand Identity - Eidos",
-                        image: "https://images.unsplash.com/photo-1626785774625-0b1c2c4eab67?w=600&h=450&fit=crop",
-                        desc: "Complete visual identity for a tech company"
-                    },
-                    {
-                        title: "Social Media Campaign",
-                        image: "https://images.unsplash.com/photo-1611162617474-5b21e879e113?w=600&h=450&fit=crop",
-                        desc: "Social media campaign for a new product"
-                    },
-                    {
-                        title: "Logo Design Collection",
-                        image: "https://images.unsplash.com/photo-1626785774573-4b799315345d?w=600&h=450&fit=crop",
-                        desc: "Collection of logo designs"
-                    },
-                    {
-                        title: "Print Design",
-                        image: "https://images.unsplash.com/photo-1561070791-2526d30994b5?w=600&h=450&fit=crop",
-                        desc: "Print design materials"
-                    },
-                    {
-                        title: "Packaging Design",
-                        image: "https://images.unsplash.com/photo-1634942537034-2531766767d1?w=600&h=450&fit=crop",
-                        desc: "Product packaging design"
-                    },
-                    {
-                        title: "Poster Design",
-                        image: "https://images.unsplash.com/photo-1572044162444-ad60f128bdea?w=600&h=450&fit=crop",
-                        desc: "Advertising poster"
-                    }
+    graphic: {
+        title: "Graphic Design",
+        description: "Creative graphic designs including brand identities, posters, and visual designs",
+        groups: {
+            // المجموعة 1: aqarlink
+            aqarlink: {
+                title: "Aqarlink",
+                description: "Brand identity and visual designs for Aqarlink",
+                cover: "projects/graphic-design/aqarlink/cover.jpg",
+                images: [
+                    "projects/graphic-design/aqarlink/cover.jpg",
+                    "projects/graphic-design/aqarlink/design1.jpg",
+                    "projects/graphic-design/aqarlink/design2.jpg"
                 ]
             },
-            motion: {
-                title: "Motion Graphics",
-                description: "Motion graphics and visual animation works",
-                projects: [
-                    {
-                        title: "Logo Animation",
-                        image: "https://images.unsplash.com/photo-1550745165-9bc0b252726f?w=600&h=450&fit=crop",
-                        desc: "Company logo animation"
-                    },
-                    {
-                        title: "Product Promo",
-                        image: "https://images.unsplash.com/photo-1536240478700-b869070f9279?w=600&h=450&fit=crop",
-                        desc: "Product promotional video"
-                    },
-                    {
-                        title: "Title Sequence",
-                        image: "https://images.unsplash.com/photo-1574717024653-61fd2cf4d44d?w=600&h=450&fit=crop",
-                        desc: "Professional video intro"
-                    },
-                    {
-                        title: "Explainer Video",
-                        image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=600&h=450&fit=crop",
-                        desc: "Service explainer video"
-                    }
+            // المجموعة 2: cielo
+            cielo: {
+                title: "Cielo",
+                description: "Creative designs for Cielo brand",
+                cover: "projects/graphic-design/cielo/cover.jpg",
+                images: [
+                    "projects/graphic-design/cielo/cover.jpg",
+                    "projects/graphic-design/cielo/design1.jpg",
+                    "projects/graphic-design/cielo/design2.jpg"
                 ]
             },
-            video: {
-                title: "Video Editing",
-                description: "Cinematic editing and production works",
-                projects: [
-                    {
-                        title: "Commercial Ad",
-                        image: "https://images.unsplash.com/photo-1574717024653-61fd2cf4d44d?w=600&h=450&fit=crop",
-                        desc: "Short commercial advertisement"
-                    },
-                    {
-                        title: "Documentary",
-                        image: "https://images.unsplash.com/photo-1492691527719-9d1e07e534b4?w=600&h=450&fit=crop",
-                        desc: "Short documentary film"
-                    },
-                    {
-                        title: "Music Video",
-                        image: "https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?w=600&h=450&fit=crop",
-                        desc: "Music video clip"
-                    },
-                    {
-                        title: "Event Coverage",
-                        image: "https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=600&h=450&fit=crop",
-                        desc: "Event coverage"
-                    },
-                    {
-                        title: "Interview Edit",
-                        image: "https://images.unsplash.com/photo-1552664730-d307ca884978?w=600&h=450&fit=crop",
-                        desc: "Journalistic interview"
-                    }
+            // المجموعة 3: eidos
+            eidos: {
+                title: "Eidos",
+                description: "Complete visual identity for Eidos",
+                cover: "projects/graphic-design/eidos/cover.jpg",
+                images: [
+                    "projects/graphic-design/eidos/cover.jpg",
+                    "projects/graphic-design/eidos/design1.jpg",
+                    "projects/graphic-design/eidos/design2.jpg"
                 ]
             },
-            ui: {
-                title: "UI/UX Design",
-                description: "User interface designs for apps and websites",
-                projects: [
-                    {
-                        title: "Mobile App Design",
-                        image: "https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?w=600&h=450&fit=crop",
-                        desc: "Mobile application design"
-                    },
-                    {
-                        title: "Dashboard UI",
-                        image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=600&h=450&fit=crop",
-                        desc: "Analytics dashboard"
-                    },
-                    {
-                        title: "Website Redesign",
-                        image: "https://images.unsplash.com/photo-1547658719-da2b51169166?w=600&h=450&fit=crop",
-                        desc: "Website redesign"
-                    }
+            // المجموعة 4: media spark
+          //  mediaspark: {
+          //      title: "Media Spark",
+          //      description: "Marketing materials for Media Spark",
+           //     cover: "projects/graphic-design/media-spark/cover.jpg",
+            //    images: [
+           //         "projects/graphic-design/media-spark/cover.jpg",
+            //        "projects/graphic-design/media-spark/design1.jpg",
+            //        "projects/graphic-design/media-spark/design2.jpg"
+            //    ]
+          //  },
+            // المجموعة 5: sia
+            sia: {
+                title: "Sia",
+                description: "Brand identity for Sia",
+                cover: "projects/graphic-design/sia/cover.jpg",
+                images: [
+                    "projects/graphic-design/sia/cover.jpg",
+                    "projects/graphic-design/sia/design1.jpg",
+                    "projects/graphic-design/sia/design2.jpg"
+                ]
+            },
+             // المجموعة 6: more
+            more: {
+                title: "More",
+                description: "Additional graphic design projects",
+                cover: "projects/graphic-design/more/cover.jpg",
+                images: [
+                    "projects/graphic-design/more/cover.jpg",
+                    "projects/graphic-design/more/design1.jpg",
+                    "projects/graphic-design/more/design2.jpg"
+                ]
+            },
+            // المجموعة 7: xaylo
+           // xaylo: {
+           //     title: "Xaylo",
+             //   description: "Creative designs for Xaylo",
+               // cover: "projects/graphic-design/xaylo/cover.jpg",
+              //  images: [
+                //    "projects/graphic-design/xaylo/cover.jpg",
+           //         "projects/graphic-design/xaylo/design1.jpg",
+             //       "projects/graphic-design/xaylo/design2.jpg"
+          //      ]
+           // }
+        }
+    },
+    ui: {
+        title: "UI/UX Design",
+        description: "User interface designs for apps and websites",
+        groups: {
+            fintechApp: {
+                title: "Fintech Mobile App",
+                description: "Banking application UI/UX design",
+                cover: "projects/ui-ux/fintech-app/cover.jpg",
+                images: [
+                    "projects/ui-ux/fintech-app/cover.jpg"
                 ]
             }
-        };
+        }
+    }
+};
+        // متغيرات للتتبع
+        let currentCategory = null;
+        let currentGroup = null;
+        let currentImages = [];
+        let currentImageIndex = 0;
 
-        // فتح التصنيف وعرض مشاريعه
-        function openCategory(category) {
-            const modal = document.getElementById('categoryModal');
-            const data = portfolioData[category];
+        // ==================== فتح القسم الرئيسي (يعرض المجموعات الفرعية) - UPDATED WITH MODERN CARDS ====================
+        function openCategory(categoryKey) {
+            currentCategory = categoryKey;
+            const data = portfolioData[categoryKey];
+            const modal = document.getElementById('groupsModal');
             
-            document.getElementById('modalTitle').textContent = data.title;
-            document.getElementById('modalDesc').textContent = data.description;
+            // تحديث عنوان المودال
+            document.getElementById('groupsModalTitle').textContent = data.title;
+            document.getElementById('groupsModalDesc').textContent = data.description;
             
-            const gallery = document.getElementById('projectsGallery');
-            gallery.innerHTML = '';
+            // بناء شبكة المجموعات
+            const grid = document.getElementById('groupsGrid');
+            grid.innerHTML = '';
             
-            data.projects.forEach((project, index) => {
-                const item = document.createElement('div');
-                item.className = 'project-item glass';
-                item.innerHTML = `
-                    <img src="${project.image}" alt="${project.title}" loading="lazy" onclick="openLightbox('${project.image}')">
-                    <div class="project-item-overlay">
-                        <div class="text-center p-4">
-                            <h4 class="font-bold text-lg mb-2">${project.title}</h4>
-                            <p class="text-sm text-gray-300 mb-3">${project.desc}</p>
-                            <button class="px-4 py-2 bg-primary rounded-full text-sm hover:bg-primary/80 transition-colors">
-                                <i class="fas fa-search-plus mr-1"></i> View
-                            </button>
+            // إنشاء بطاقة لكل مجموعة فرعية (Modern Design)
+            Object.entries(data.groups).forEach(([groupKey, group], index) => {
+                const card = document.createElement('div');
+                card.className = 'modern-group-card reveal';
+                card.onclick = () => openGroup(groupKey);
+                
+                // استخدام صورة الغلاف أو صورة افتراضية إذا لم ت existed
+                const imgSrc = group.cover || group.images[0];
+                const imageCount = group.images.length;
+                
+                card.innerHTML = `
+                    <div class="card-image-wrapper">
+                        <img src="${imgSrc}" alt="${group.title}" 
+                             onerror="this.src='https://via.placeholder.com/600x400/8b5cf6/ffffff?text=${encodeURIComponent(group.title)}'">
+                    </div>
+                    <div class="card-content">
+                        <div class="card-header">
+                            <h3 class="card-title">${group.title}</h3>
+                            <span class="photo-badge">${imageCount} Photos</span>
+                        </div>
+                        <p class="card-description">${group.description}</p>
+                        <div class="view-gallery">
+                            <span>View Gallery</span>
+                            <i class="fas fa-arrow-right"></i>
                         </div>
                     </div>
                 `;
-                gallery.appendChild(item);
                 
-                gsap.from(item, {
+                grid.appendChild(card);
+                
+                // animation
+                gsap.from(card, {
                     opacity: 0,
                     y: 30,
                     duration: 0.5,
@@ -1274,84 +1524,133 @@
             document.body.style.overflow = 'hidden';
         }
 
-        // إغلاق المودال
-        function closeCategory() {
-            document.getElementById('categoryModal').classList.remove('active');
+        // إغلاق مودال المجموعات
+        function closeGroupsModal() {
+            document.getElementById('groupsModal').classList.remove('active');
             document.body.style.overflow = 'auto';
+            currentCategory = null;
         }
 
-        // Lightbox
-        function openLightbox(src) {
-            document.getElementById('lightboxImg').src = src;
-            document.getElementById('lightbox').classList.add('active');
+        // ==================== فتح المجموعة الفرعية (يعرض الصور) ====================
+        function openGroup(groupKey) {
+            currentGroup = groupKey;
+            const categoryData = portfolioData[currentCategory];
+            const groupData = categoryData.groups[groupKey];
+            
+            const modal = document.getElementById('imagesModal');
+            
+            document.getElementById('imagesModalTitle').textContent = groupData.title;
+            document.getElementById('imagesModalDesc').textContent = groupData.description;
+            
+            const grid = document.getElementById('imagesGrid');
+            grid.innerHTML = '';
+            
+            // حفظ الصور للتنقل بينها في اللايت بوكس
+            currentImages = groupData.images;
+            
+            // إنشاء عنصر لكل صورة
+            groupData.images.forEach((imgSrc, index) => {
+                const item = document.createElement('div');
+                item.className = 'image-item reveal';
+                item.onclick = () => openLightbox(index);
+                
+                item.innerHTML = `
+                    <img src="${imgSrc}" alt="${groupData.title} - ${index + 1}" 
+                         onerror="this.src='https://via.placeholder.com/400x300/1a1a2e/ffffff?text=Image+${index + 1}'">
+                    <div class="absolute inset-0 bg-black/0 hover:bg-black/30 transition-colors flex items-center justify-center opacity-0 hover:opacity-100">
+                        <i class="fas fa-search-plus text-3xl text-white"></i>
+                    </div>
+                `;
+                
+                grid.appendChild(item);
+                
+                gsap.from(item, {
+                    opacity: 0,
+                    scale: 0.9,
+                    duration: 0.4,
+                    delay: index * 0.05
+                });
+            });
+            
+            // إغلاق مودال المجموعات وفتح مودال الصور
+            document.getElementById('groupsModal').classList.remove('active');
+            modal.classList.add('active');
+        }
+
+        // إغلاق مودال الصور
+        function closeImagesModal() {
+            document.getElementById('imagesModal').classList.remove('active');
+            document.body.style.overflow = 'auto';
+            currentGroup = null;
+            currentImages = [];
+        }
+
+        // الرجوع من الصور إلى المجموعات
+        function backToGroups() {
+            document.getElementById('imagesModal').classList.remove('active');
+            document.getElementById('groupsModal').classList.add('active');
+            currentGroup = null;
+        }
+
+        // ==================== اللايت بوكس - عرض الصورة بحجم كبير ====================
+        function openLightbox(index) {
+            currentImageIndex = index;
+            const lightbox = document.getElementById('lightbox');
+            const img = document.getElementById('lightboxImg');
+            
+            updateLightboxImage();
+            lightbox.classList.add('active');
         }
 
         function closeLightbox() {
             document.getElementById('lightbox').classList.remove('active');
         }
 
-        /* ==========================================
-           نظام إدارة المشاريع القديم (للـ Featured Projects)
-           ========================================== */
-        const projectsData = {
-            1: {
-                title: "Brand Identity System",
-                category: "Graphic Design",
-                image: "https://images.unsplash.com/photo-1561070791-2526d30994b5?w=1200&h=800&fit=crop",
-                concept: "Create a modern, tech-forward identity that communicates innovation and trustworthiness for a fintech startup.",
-                process: "Started with competitor analysis and brand strategy sessions. Developed 3 logo concepts, color palettes, and typography systems. Created extensive brand guidelines covering all touchpoints.",
-                result: "Successful launch with 50,000+ impressions in the first week. Brand recognized as 'Most Innovative' at industry awards.",
-                tools: ["Adobe Illustrator", "Photoshop", "Figma"]
-            },
-            2: {
-                title: "Product Launch Animation",
-                category: "Motion Graphics",
-                image: "https://images.unsplash.com/photo-1550745165-9bc0b252726f?w=1200&h=800&fit=crop",
-                concept: "3D animation revealing the new smartphone features through dynamic, fluid motion and particle effects.",
-                process: "Modeled product in Cinema 4D, animated in After Effects with Element 3D. Added sound design and color grading for cinematic feel.",
-                result: "2M+ views on social media, 15% increase in pre-orders attributed to the video campaign.",
-                tools: ["After Effects", "Cinema 4D", "Octane Render"]
-            },
-            3: {
-                title: "Fintech Mobile App",
-                category: "UI/UX Design",
-                image: "https://images.unsplash.com/photo-1551650975-87deedd944c3?w=1200&h=800&fit=crop",
-                concept: "Simplify banking for millennials with an intuitive, dark-mode interface that makes finance management enjoyable.",
-                process: "Conducted user interviews, created wireframes and prototypes. Tested with 50 users, iterated based on feedback. Delivered design system and specs.",
-                result: "4.8★ rating on App Store, 40% increase in daily active users within first month.",
-                tools: ["Figma", "Principle", "Maze"]
-            },
-            4: {
-                title: "Documentary Short Film",
-                category: "Video Editing",
-                image: "https://images.unsplash.com/photo-1574717024653-61fd2cf4d44d?w=1200&h=800&fit=crop",
-                concept: "Tell the story of local artisans preserving traditional crafts in the modern digital age.",
-                process: "50 hours of footage edited down to 15 minutes. Color graded for emotional impact, sound designed for immersion.",
-                result: "Selected for 3 film festivals, 100K+ views on YouTube, raised $20K for artisan community.",
-                tools: ["Premiere Pro", "DaVinci Resolve", "Audition"]
-            },
-            5: {
-                title: "Event Campaign Posters",
-                category: "Graphic Design",
-                image: "https://images.unsplash.com/photo-1626785774573-4b799315345d?w=1200&h=800&fit=crop",
-                concept: "Create a series of posters that capture the energy and diversity of an electronic music festival.",
-                process: "Experimented with generative design techniques and glitch art effects. Produced 10 unique poster variants for different venues.",
-                result: "Sold out event 2 weeks early, posters became collectible items among attendees.",
-                tools: ["Photoshop", "Processing", "Illustrator"]
-            },
-            6: {
-                title: "Logo Animation Reel",
-                category: "Motion Graphics",
-                image: "https://images.unsplash.com/photo-1536240478700-b869070f9279?w=1200&h=800&fit=crop",
-                concept: "Showcase versatility through various logo animation styles from minimalist to complex 3D reveals.",
-                process: "Created 12 unique logo animations demonstrating different techniques: kinetic typography, liquid motion, geometric transformations.",
-                result: "Used by agencies worldwide as reference, generated 20+ new client inquiries.",
-                tools: ["After Effects", "Blender", "Illustrator"]
+        function updateLightboxImage() {
+            const img = document.getElementById('lightboxImg');
+            img.src = currentImages[currentImageIndex];
+            document.getElementById('currentImg').textContent = currentImageIndex + 1;
+            document.getElementById('totalImg').textContent = currentImages.length;
+        }
+
+        // التنقل بين الصور (1 للأمام، -1 للخلف)
+        function changeImage(direction) {
+            currentImageIndex += direction;
+            
+            // التكرار الدائري
+            if (currentImageIndex >= currentImages.length) {
+                currentImageIndex = 0;
+            } else if (currentImageIndex < 0) {
+                currentImageIndex = currentImages.length - 1;
             }
-        };
+            
+            updateLightboxImage();
+        }
 
         /* ==========================================
-           تأثيرات GSAP
+           إغلاق بالـ ESC وأسهم التنقل
+           ========================================== */
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') {
+                // أولوية الإغلاق: اللايت بوكس أولاً، ثم مودال الصور، ثم مودال المجموعات
+                if (document.getElementById('lightbox').classList.contains('active')) {
+                    closeLightbox();
+                } else if (document.getElementById('imagesModal').classList.contains('active')) {
+                    closeImagesModal();
+                } else if (document.getElementById('groupsModal').classList.contains('active')) {
+                    closeGroupsModal();
+                }
+            }
+            
+            // التنقل بالأسهم في اللايت بوكس
+            if (document.getElementById('lightbox').classList.contains('active')) {
+                if (e.key === 'ArrowLeft') changeImage(-1);
+                if (e.key === 'ArrowRight') changeImage(1);
+            }
+        });
+
+        /* ==========================================
+           تأثيرات GSAP (الموجودة أصلاً)
            ========================================== */
         gsap.registerPlugin(ScrollTrigger);
 
@@ -1390,7 +1689,7 @@
         });
 
         /* ==========================================
-           نظام الجسيمات
+           نظام الجسيمات (الموجود أصلاً)
            ========================================== */
         const canvas = document.getElementById('particles-canvas');
         const ctx = canvas.getContext('2d');
@@ -1461,7 +1760,7 @@
         animateParticles();
 
         /* ==========================================
-           المؤشر المخصص
+           المؤشر المخصص (الموجود أصلاً)
            ========================================== */
         const cursor = document.getElementById('cursor');
         const cursorDot = document.getElementById('cursor-dot');
@@ -1486,7 +1785,7 @@
         });
 
         /* ==========================================
-           شريط التنقل
+           شريط التنقل (الموجود أصلاً)
            ========================================== */
         const navbar = document.getElementById('navbar');
         window.addEventListener('scroll', () => {
@@ -1522,7 +1821,7 @@
         });
 
         /* ==========================================
-           تبديل الوضع
+           تبديل الوضع (الموجود أصلاً)
            ========================================== */
         const themeToggle = document.getElementById('theme-toggle');
         const themeIcon = document.getElementById('theme-icon');
@@ -1548,7 +1847,7 @@
         });
 
         /* ==========================================
-           شاشة التحميل
+           شاشة التحميل (الموجودة أصلاً)
            ========================================== */
         window.addEventListener('load', () => {
             const loader = document.getElementById('loader');
@@ -1580,7 +1879,7 @@
         });
 
         /* ==========================================
-           معالجة النموذج
+           معالجة النموذج (الموجودة أصلاً)
            ========================================== */
         function handleSubmit(e) {
             e.preventDefault();
@@ -1606,14 +1905,6 @@
                     target.scrollIntoView({ behavior: 'smooth', block: 'start' });
                 }
             });
-        });
-
-        // إغلاق بالـ ESC
-        document.addEventListener('keydown', (e) => {
-            if (e.key === 'Escape') {
-                closeCategory();
-                closeLightbox();
-            }
         });
     </script>
 </body>
