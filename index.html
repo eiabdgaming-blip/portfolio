@@ -15,7 +15,7 @@
     
     <!-- GSAP for Animations -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
     <!-- Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
@@ -224,7 +224,7 @@
             box-shadow: 0 10px 30px rgba(255, 0, 0, 0.3);
         }
 
-        /* ====== أنماط التصنيفات الرئيسية ====== */
+        /* أنماط التصنيفات الرئيسية */
         .category-card {
             position: relative;
             overflow: hidden;
@@ -266,7 +266,7 @@
             background: linear-gradient(to top, rgba(139, 92, 246, 0.9) 0%, rgba(0,0,0,0.5) 100%);
         }
 
-        /* ====== أنماط المجموعات الفرعية الجديدة - MODERN CARD DESIGN ====== */
+        /* أنماط المجموعات الفرعية */
         .modern-group-card {
             background: rgba(255, 255, 255, 0.03);
             backdrop-filter: blur(10px);
@@ -367,12 +367,14 @@
             transform: translateX(4px);
         }
 
-        /* ====== أنماط شبكة الصور داخل المجموعة ====== */
+        /* شبكة الصور داخل المجموعة */
         .images-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
             gap: 1.5rem;
             padding: 2rem;
+            max-width: 1400px;
+            margin: 0 auto;
         }
 
         .image-item {
@@ -398,7 +400,7 @@
             object-fit: cover;
         }
 
-        /* ====== المودال العام ====== */
+        /* المودال العام */
         .modal {
             display: none;
             position: fixed;
@@ -466,7 +468,7 @@
             transform: translateX(-5px);
         }
 
-        /* ====== لايت بوكس متقدم ====== */
+        /* اللايت بوكس */
         .lightbox {
             display: none;
             position: fixed;
@@ -536,9 +538,6 @@
             color: white;
         }
     </style>
-<base target="_blank">
-<base target="_blank">
-<base target="_blank">
 </head>
 <body class="antialiased selection:bg-primary selection:text-white">
 
@@ -795,59 +794,7 @@
         </div>
     </section>
 
-    <!-- 
-    ==========================================
-    سكشن Selected Works - المعدل
-    ==========================================
-    التعديلات:
-    1. تم حذف Motion Graphics و Video Editing
-    2. تبقى قسمين فقط: Graphic Design و UI/UX Design
-    3. عند الضغط على أي قسم يفتح مودال يعرض المجموعات الفرعية (Groups)
-    4. عند الضغط على المجموعة الفرعية يفتح مودال آخر يعرض الصور
-    
-    شرح إضافة محتوى جديد:
-    =====================
-    
-    A. إضافة مجموعة فرعية جديدة داخل Graphic Design:
-       1. افتح ملف index.html في محرر النصوص
-       2. ابحث عن "portfolioData" في JavaScript (أسفل الصفحة)
-       3. داخل "graphic" -> "groups" أضف كائن جديد:
-       
-       groupName: {
-           title: "عنوان المجموعة",
-           description: "وصف المجموعة",
-           cover: "مسار-صورة-الغلاف.jpg",
-           images: [
-               "مسار/الصورة/الاولى.jpg",
-               "مسار/الصورة/الثانية.jpg"
-           ]
-       }
-       
-    B. هيكل مجلدات المشروع المقترح:
-       📁 مشروعك/
-       ├── 📄 index.html
-       ├── 📁 projects/
-       │   ├── 📁 graphic-design/
-       │   │   ├── 📁 eidos/
-       │   │   │   ├── 📄 cover.jpg (صورة الغلاف)
-       │   │   │   ├── 📄 img1.jpg
-       │   │   │   └── 📄 img2.jpg
-       │   │   └── 📁 social-media/
-       │   │       ├── 📄 cover.jpg
-       │   │       └── 📄 ...
-       │   └── 📁 ui-ux/
-       │       ├── 📁 fintech-app/
-       │       │   ├── 📄 cover.jpg
-       │       │   └── 📄 ...
-       │       └── 📁 dashboard/
-       │           ├── 📄 cover.jpg
-       │           └── 📄 ...
-       └── 📁 assets/
-       
-    C. لإضافة قسم رئيسي جديد:
-       1. أضف البيانات في portfolioData
-       2. أضف البطاقة في HTML داخل شبكة الأقسام
-    -->
+    <!-- سكشن Selected Works -->
     <section id="portfolio" class="py-20 md:py-32 relative">
         <div class="absolute inset-0 bg-gradient-to-b from-transparent via-primary/5 to-transparent"></div>
         
@@ -861,11 +808,7 @@
                 </p>
             </div>
 
-            <!-- 
-            شبكة الأقسام الرئيسية - 2x1 (قسمين فقط)
-            قسم 1: Graphic Design
-            قسم 2: UI/UX Design
-            -->
+            <!-- شبكة الأقسام الرئيسية -->
             <div class="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">
                 
                 <!-- 1. Graphic Design -->
@@ -904,11 +847,7 @@
         </div>
     </section>
 
-    <!-- ==================== المودال الأول: عرض المجموعات الفرعية (UPDATED WITH MODERN CARDS) ==================== -->
-    <!-- 
-    هذا المودال يظهر عند الضغط على قسم رئيسي (مثل Graphic Design)
-    يعرض شبكة من البطاقات الحديثة، كل بطاقة تمثل مجموعة فرعية
-    -->
+    <!-- المودال الأول: عرض المجموعات الفرعية -->
     <div id="groupsModal" class="modal">
         <button class="close-modal" onclick="closeGroupsModal()">
             <i class="fas fa-times"></i>
@@ -918,24 +857,18 @@
             <h2 id="groupsModalTitle" class="font-display text-4xl font-bold mb-2 text-center"></h2>
             <p id="groupsModalDesc" class="text-gray-400 text-center mb-12"></p>
             
-            <!-- شبكة المجموعات الفرعية - Modern Grid -->
             <div id="groupsGrid" class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
-                <!-- يتم ملؤها ديناميكياً بواسطة JavaScript -->
+                <!-- يتم ملؤها ديناميكياً -->
             </div>
         </div>
     </div>
 
-    <!-- ==================== المودال الثاني: عرض صور المجموعة ==================== -->
-    <!-- 
-    هذا المودال يظهر عند الضغط على مجموعة فرعية
-    يعرض شبكة من الصور، وعند الضغط على أي صورة تفتح في اللايت بوكس
-    -->
+    <!-- المودال الثاني: عرض صور المجموعة -->
     <div id="imagesModal" class="modal">
         <button class="close-modal" onclick="closeImagesModal()">
             <i class="fas fa-times"></i>
         </button>
         
-        <!-- زر الرجوع للمجموعات -->
         <button class="back-button" onclick="backToGroups()">
             <i class="fas fa-arrow-left"></i>
             <span>Back to Groups</span>
@@ -945,21 +878,13 @@
             <h2 id="imagesModalTitle" class="font-display text-3xl font-bold mb-2 text-center"></h2>
             <p id="imagesModalDesc" class="text-gray-400 text-center mb-8"></p>
             
-            <!-- شبكة الصور -->
-            <div id="imagesGrid" class="images-grid max-w-6xl mx-auto">
-                <!-- يتم ملؤها ديناميكياً بواسطة JavaScript -->
+            <div id="imagesGrid" class="images-grid">
+                <!-- يتم ملؤها ديناميكياً -->
             </div>
         </div>
     </div>
 
-    <!-- ==================== اللايت بوكس: عرض الصورة بحجم كبير مع إمكانية التنقل ==================== -->
-    <!-- 
-    يظهر عند الضغط على أي صورة داخل مودال الصور
-    يحتوي على:
-    - زر إغلاق (X) في الأعلى
-    - أسهم للتنقل بين الصور (< >)
-    - عداد يظهر رقم الصورة الحالية / العدد الكلي
-    -->
+    <!-- اللايت بوكس -->
     <div id="lightbox" class="lightbox">
         <span class="lightbox-close" onclick="closeLightbox()">&times;</span>
         <button class="lightbox-nav lightbox-prev" onclick="changeImage(-1)">
@@ -1334,328 +1259,300 @@
     </footer>
 
     <script>
-        /* 
-        ==========================================
-        بيانات المحفظة - نظام المجموعات المتداخلة
-        ==========================================
-        
-        الهيكل:
-        القسم الرئيسي (Category) -> المجموعة الفرعية (Group) -> الصور (Images)
-        
-        لإضافة مجموعة جديدة داخل Graphic Design:
-        1. انسخ قالب المجموعة وألصقه داخل "graphic.groups"
-        2. غير المفتاح (مثل: myNewGroup)
-        3. عدل العنوان والوصف والمسارات
-        
-        قالب المجموعة:
-        ----------------
-        uniqueKey: {
-            title: "عنوان المجموعة",
-            description: "وصف المجموعة",
-            cover: "projects/graphic-design/مجلد-المجموعة/cover.jpg",
-            images: [
-                "projects/graphic-design/مجلد-المجموعة/صورة1.jpg",
-                "projects/graphic-design/مجلد-المجموعة/صورة2.jpg",
-                "projects/graphic-design/مجلد-المجموعة/صورة3.jpg"
-            ]
-        }
-        */
-        
+        // بيانات المحفظة
         const portfolioData = {
-    graphic: {
-        title: "Graphic Design",
-        description: "Creative graphic designs including brand identities, posters, and visual designs",
-        groups: {
-            // المجموعة 1: aqarlink
-            aqarlink: {
-                title: "Aqarlink",
-                description: "Brand identity and visual designs for Aqarlink",
-                cover: "projects/graphic-design/aqarlink/cover.jpg",
-                images: [
-                    "projects/graphic-design/aqarlink/cover.jpg",
-                    "projects/graphic-design/aqarlink/design1.jpg",
-                    "projects/graphic-design/aqarlink/design2.jpg"
-                ]
+            graphic: {
+                title: "Graphic Design",
+                description: "Creative graphic designs including brand identities, posters, and visual designs",
+                groups: {
+                    aqarlink: {
+                        title: "Aqarlink",
+                        description: "Brand identity and visual designs for Aqarlink",
+                        cover: "projects/graphic-design/aqarlink/cover.jpg",
+                        images: [
+                            "projects/graphic-design/aqarlink/cover.jpg",
+                            "projects/graphic-design/aqarlink/design1.jpg",
+                            "projects/graphic-design/aqarlink/design2.jpg",
+                            "projects/graphic-design/aqarlink/design3.jpg",
+                        ]
+                    },
+                    cielo: {
+                        title: "Cielo",
+                        description: "Creative designs for Cielo brand",
+                        cover: "projects/graphic-design/cielo/cover.jpg",
+                        images: [
+                            "projects/graphic-design/cielo/cover.jpg",
+                            "projects/graphic-design/cielo/design1.jpg",
+                            "projects/graphic-design/cielo/design2.jpg",
+                            "projects/graphic-design/cielo/design3.jpg",
+                            "projects/graphic-design/cielo/design4.jpg",
+                            "projects/graphic-design/cielo/design5.jpg"
+                        ]
+                    },
+                    eidos: {
+                        title: "Eidos",
+                        description: "Complete visual identity for Eidos",
+                        cover: "projects/graphic-design/eidos/cover.jpg",
+                        images: [
+                            "projects/graphic-design/eidos/cover.jpg",
+                            "projects/graphic-design/eidos/design1.jpg",
+                            "projects/graphic-design/eidos/design2.jpg",
+                            "projects/graphic-design/eidos/design3.jpg",
+                            "projects/graphic-design/eidos/design4.jpg"
+                        ]
+                    },
+                    sia: {
+                        title: "Sia",
+                        description: "Brand identity for Sia",
+                        cover: "projects/graphic-design/sia/cover.jpg",
+                        images: [
+                            "projects/graphic-design/sia/cover.jpg",
+                            "projects/graphic-design/sia/design1.jpg",
+                            "projects/graphic-design/sia/design2.jpg",
+                            "projects/graphic-design/sia/design3.jpg",
+                            "projects/graphic-design/sia/design4.jpg",
+                            "projects/graphic-design/sia/design5.jpg",
+                            "projects/graphic-design/sia/design6.jpg",
+                            "projects/graphic-design/sia/design7.jpg",
+                            "projects/graphic-design/sia/design8.jpg",
+                            "projects/graphic-design/sia/design9.jpg"
+                        ]
+                    },
+                    more: {
+                        title: "More",
+                        description: "Additional graphic design projects",
+                        cover: "projects/graphic-design/more/cover.jpg",
+                        images: [
+                            "projects/graphic-design/more/cover.jpg",
+                            "projects/graphic-design/more/design1.jpg",
+                            "projects/graphic-design/more/design2.jpg",
+                            "projects/graphic-design/more/design3.jpg"
+                        ]
+                    }
+                }
             },
-            // المجموعة 2: cielo
-            cielo: {
-                title: "Cielo",
-                description: "Creative designs for Cielo brand",
-                cover: "projects/graphic-design/cielo/cover.jpg",
-                images: [
-                    "projects/graphic-design/cielo/cover.jpg",
-                    "projects/graphic-design/cielo/design1.jpg",
-                    "projects/graphic-design/cielo/design2.jpg"
-                ]
-            },
-            // المجموعة 3: eidos
-            eidos: {
-                title: "Eidos",
-                description: "Complete visual identity for Eidos",
-                cover: "projects/graphic-design/eidos/cover.jpg",
-                images: [
-                    "projects/graphic-design/eidos/cover.jpg",
-                    "projects/graphic-design/eidos/design1.jpg",
-                    "projects/graphic-design/eidos/design2.jpg"
-                ]
-            },
-            // المجموعة 4: media spark
-          //  mediaspark: {
-          //      title: "Media Spark",
-          //      description: "Marketing materials for Media Spark",
-           //     cover: "projects/graphic-design/media-spark/cover.jpg",
-            //    images: [
-           //         "projects/graphic-design/media-spark/cover.jpg",
-            //        "projects/graphic-design/media-spark/design1.jpg",
-            //        "projects/graphic-design/media-spark/design2.jpg"
-            //    ]
-          //  },
-            // المجموعة 5: sia
-            sia: {
-                title: "Sia",
-                description: "Brand identity for Sia",
-                cover: "projects/graphic-design/sia/cover.jpg",
-                images: [
-                    "projects/graphic-design/sia/cover.jpg",
-                    "projects/graphic-design/sia/design1.jpg",
-                    "projects/graphic-design/sia/design2.jpg"
-                ]
-            },
-             // المجموعة 6: more
-            more: {
-                title: "More",
-                description: "Additional graphic design projects",
-                cover: "projects/graphic-design/more/cover.jpg",
-                images: [
-                    "projects/graphic-design/more/cover.jpg",
-                    "projects/graphic-design/more/design1.jpg",
-                    "projects/graphic-design/more/design2.jpg"
-                ]
-            },
-            // المجموعة 7: xaylo
-           // xaylo: {
-           //     title: "Xaylo",
-             //   description: "Creative designs for Xaylo",
-               // cover: "projects/graphic-design/xaylo/cover.jpg",
-              //  images: [
-                //    "projects/graphic-design/xaylo/cover.jpg",
-           //         "projects/graphic-design/xaylo/design1.jpg",
-             //       "projects/graphic-design/xaylo/design2.jpg"
-          //      ]
-           // }
-        }
-    },
-    ui: {
-        title: "UI/UX Design",
-        description: "User interface designs for apps and websites",
-        groups: {
-            fintechApp: {
-                title: "Fintech Mobile App",
-                description: "Banking application UI/UX design",
-                cover: "projects/ui-ux/fintech-app/cover.jpg",
-                images: [
-                    "projects/ui-ux/fintech-app/cover.jpg"
-                ]
+            ui: {
+                title: "UI/UX Design",
+                description: "User interface designs for apps and websites",
+                groups: {
+                    fintechApp: {
+                        title: "Fintech Mobile App",
+                        description: "Banking application UI/UX design",
+                        cover: "projects/ui-ux/fintech-app/cover.jpg",
+                        images: [
+                            "projects/ui-ux/fintech-app/cover.jpg"
+                        ]
+                    }
+                }
             }
-        }
-    }
-};
+        };
+
         // متغيرات للتتبع
         let currentCategory = null;
         let currentGroup = null;
         let currentImages = [];
         let currentImageIndex = 0;
 
-        // ==================== فتح القسم الرئيسي (يعرض المجموعات الفرعية) - UPDATED WITH MODERN CARDS ====================
+        // فتح القسم الرئيسي (المجموعات الفرعية) - مصحح
         function openCategory(categoryKey) {
             currentCategory = categoryKey;
             const data = portfolioData[categoryKey];
             const modal = document.getElementById('groupsModal');
-            document.getElementById('graphic-count').textContent =
-Object.keys(portfolioData.graphic.groups).length + " Groups";
             
-            // تحديث عنوان المودال
+            const countElement = document.getElementById(categoryKey === 'graphic' ? 'graphic-count' : 'ui-count');
+            if (countElement && data.groups) {
+                countElement.textContent = Object.keys(data.groups).length + " Groups";
+            }
+            
             document.getElementById('groupsModalTitle').textContent = data.title;
             document.getElementById('groupsModalDesc').textContent = data.description;
             
-            // بناء شبكة المجموعات
             const grid = document.getElementById('groupsGrid');
             grid.innerHTML = '';
             
-            // إنشاء بطاقة لكل مجموعة فرعية (Modern Design)
             Object.entries(data.groups).forEach(([groupKey, group], index) => {
                 const card = document.createElement('div');
-                card.className = 'cursor-pointer';
-                card.addEventListener('click', () => {
-                openGroup(groupKey);
-                });
+                card.className = 'cursor-pointer group';
+                card.onclick = () => openGroup(groupKey);
                 
-                // استخدام صورة الغلاف أو صورة افتراضية إذا لم ت existed
-                const imgSrc = group.cover || (group.images && group.images[0]) || '/images/fallback.jpg';
-                const imageCount = group.images.length;
+                const imgSrc = group.cover || (group.images && group.images[0]) || 'https://via.placeholder.com/400x300?text=No+Image';
+                const imageCount = group.images ? group.images.length : 0;
                 
-               
-
-card.innerHTML = `
-    <div class="bg-[#0f0f14] rounded-2xl overflow-hidden">
-
-        <!-- الصورة -->
-        <div class="h-56 overflow-hidden">
-            <img src="${imgSrc}" loading="lazy"
-                 class="w-full h-full object-cover"
-                 onerror="this.src='https://via.placeholder.com/400x300?text=No+Image'">
-        </div>
-
-        <!-- المحتوى -->
-        <div class="p-4">
-            <h3 class="text-white text-lg font-bold mb-1">
-                ${group.title}
-            </h3>
-
-            <p class="text-gray-400 text-sm mb-3">
-                ${group.description || ''}
-            </p>
-
-            <span class="text-primary text-sm">
-                ${group.images.length} Photos
-            </span>
-        </div>
-    </div>
-`;
+                // HTML صحيح بدون أخطاء
+                card.innerHTML = `
+                    <div class="modern-group-card h-full bg-[#0f0f14] rounded-2xl overflow-hidden border border-white/10 hover:border-primary/50 transition-all duration-300">
+                        <div class="card-image-wrapper relative h-56 overflow-hidden">
+                            <img src="${imgSrc}" 
+                                 alt="${group.title}"
+                                 loading="lazy"
+                                 class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                                 onerror="this.src='https://via.placeholder.com/400x300?text=No+Image'">
+                            <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-60"></div>
+                            <div class="absolute bottom-4 right-4 bg-primary/90 text-white px-3 py-1 rounded-full text-sm font-bold">
+                                ${imageCount} Design
+                            </div>
+                        </div>
+                        <div class="card-content p-5">
+                            <h3 class="card-title text-xl font-bold text-white mb-2">${group.title}</h3>
+                            <p class="card-description text-gray-400 text-sm mb-3 line-clamp-2">${group.description || ''}</p>
+                            <div class="flex items-center text-primary font-semibold text-sm group-hover:gap-2 transition-all">
+                                <span>عرض المشروع</span>
+                                <i class="fas fa-arrow-left mr-2 transform group-hover:-translate-x-1 transition-transform"></i>
+                            </div>
+                        </div>
+                    </div>
+                `;
                 
                 grid.appendChild(card);
                 
-                // animation
-                gsap.from(card, {
-                    opacity: 0,
-                    y: 30,
-                    duration: 0.5,
-                    delay: index * 0.1
-                });
+                if (typeof gsap !== 'undefined') {
+                    gsap.from(card, {
+                        opacity: 0,
+                        y: 30,
+                        duration: 0.5,
+                        delay: index * 0.1
+                    });
+                }
             });
             
             modal.classList.add('active');
             document.body.style.overflow = 'hidden';
         }
 
-        // إغلاق مودال المجموعات
-        function closeGroupsModal() {
-            document.getElementById('groupsModal').classList.remove('active');
-            document.body.style.overflow = 'auto';
-            currentCategory = null;
-        }
-
-        // ==================== فتح المجموعة الفرعية (يعرض الصور) ====================
+        // فتح المجموعة (عرض جميع الصور) - مصحح لعرض أي عدد من الصور
         function openGroup(groupKey) {
+            if (!currentCategory || !portfolioData[currentCategory]) return;
+            
             const categoryData = portfolioData[currentCategory];
             const groupData = categoryData.groups[groupKey];
             
+            if (!groupData) return;
+            
+            currentGroup = groupKey;
+            currentImages = groupData.images || [];
+            
+            document.getElementById('groupsModal').classList.remove('active');
             const modal = document.getElementById('imagesModal');
             modal.classList.add('active');
             document.body.style.overflow = 'hidden';
-            console.log("Rendering images:", groupData.images);
             
             document.getElementById('imagesModalTitle').textContent = groupData.title;
-            document.getElementById('imagesModalDesc').textContent = groupData.description;
+            document.getElementById('imagesModalDesc').textContent = groupData.description || `${currentImages.length} صورة`;
             
             const grid = document.getElementById('imagesGrid');
             grid.innerHTML = '';
             
-            // حفظ الصور للتنقل بينها في اللايت بوكس
-            currentImages = groupData.images;
+            if (currentImages.length === 0) {
+                grid.innerHTML = '<div class="col-span-full text-center text-gray-400 py-12 text-xl">لا توجد صور</div>';
+                return;
+            }
             
-            // إنشاء عنصر لكل صورة
-            groupData.images.forEach((imgSrc, index) => {
+            // عرض جميع الصور الموجودة في المصفوفة (1 أو 1000 صورة)
+            currentImages.forEach((imgSrc, index) => {
                 const item = document.createElement('div');
-                item.className = 'image-item reveal';
-                item.onclick = () => openLightbox(index);
+                item.className = 'image-item relative rounded-xl overflow-hidden cursor-zoom-in bg-white/5 border border-white/10 hover:border-primary/50 transition-all duration-300 group';
+                item.style.aspectRatio = '4/3';
+                
+                const safeImgSrc = imgSrc || 'https://via.placeholder.com/400x300?text=No+Image';
                 
                 item.innerHTML = `
-    <div class="relative w-full h-full">
-        <img src="${imgSrc}" 
-             class="w-full h-full object-cover"
-             onerror="this.src='https://via.placeholder.com/400x300'">
-
-        <div class="absolute inset-0 bg-black/30 opacity-0 hover:opacity-100 transition flex items-center justify-center">
-            <i class="fas fa-search-plus text-white text-2xl"></i>
-        </div>
-    </div>
-`;
+                    <img src="${safeImgSrc}" 
+                         alt="${groupData.title} - ${index + 1}"
+                         loading="lazy"
+                         class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                         onerror="this.src='https://via.placeholder.com/400x300?text=Error'">
+                    <div class="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                        <div class="text-center">
+                            <i class="fas fa-search-plus text-white text-3xl mb-2"></i>
+                            <p class="text-white text-sm">صورة ${index + 1}</p>
+                        </div>
+                    </div>
+                `;
+                
+                item.onclick = (e) => {
+                    e.stopPropagation();
+                    openLightbox(index);
+                };
                 
                 grid.appendChild(item);
                 
-                gsap.from(item, {
-                    opacity: 0,
-                    scale: 0.9,
-                    duration: 0.4,
-                    delay: index * 0.05
-                });
+                if (typeof gsap !== 'undefined') {
+                    gsap.from(item, {
+                        opacity: 0,
+                        scale: 0.9,
+                        duration: 0.4,
+                        delay: index * 0.05,
+                        ease: "power2.out"
+                    });
+                }
             });
-            
-            // إغلاق مودال المجموعات وفتح مودال الصور
-            document.getElementById('groupsModal').classList.remove('active');
-            modal.classList.add('active');
         }
 
-        // إغلاق مودال الصور
-        function closeImagesModal() {
-            document.getElementById('imagesModal').classList.remove('active');
-            document.body.style.overflow = 'auto';
-            currentGroup = null;
-            currentImages = [];
-        }
-
-        // الرجوع من الصور إلى المجموعات
-        function backToGroups() {
-            document.getElementById('imagesModal').classList.remove('active');
-            document.getElementById('groupsModal').classList.add('active');
-            currentGroup = null;
-        }
-
-        // ==================== اللايت بوكس - عرض الصورة بحجم كبير ====================
+        // اللايت بوكس - مصحح
         function openLightbox(index) {
-    currentImageIndex = index;
-    const lightbox = document.getElementById('lightbox');
-    const img = document.getElementById('lightboxImg');
-    
-    img.src = currentImages[currentImageIndex] || '/images/fallback.jpg';
-             document.getElementById('currentImg').textContent = currentImageIndex + 1;
-             document.getElementById('totalImg').textContent = currentImages.length;
-
-             lightbox.classList.add('active');
+            if (!currentImages || currentImages.length === 0) return;
+            
+            currentImageIndex = index;
+            const lightbox = document.getElementById('lightbox');
+            const img = document.getElementById('lightboxImg');
+            
+            const safeSrc = currentImages[currentImageIndex] || 'https://via.placeholder.com/800x600?text=No+Image';
+            img.src = safeSrc;
+            
+            document.getElementById('currentImg').textContent = currentImageIndex + 1;
+            document.getElementById('totalImg').textContent = currentImages.length;
+            
+            lightbox.classList.add('active');
         }
 
         function closeLightbox() {
             document.getElementById('lightbox').classList.remove('active');
         }
 
-        function updateLightboxImage() {
-            const img = document.getElementById('lightboxImg');
-           img.src = currentImages[currentImageIndex] || '/images/fallback.jpg';
-            document.getElementById('currentImg').textContent = currentImageIndex + 1;
-            document.getElementById('totalImg').textContent = currentImages.length;
-        }
-
-        // التنقل بين الصور (1 للأمام، -1 للخلف)
         function changeImage(direction) {
+            if (!currentImages || currentImages.length <= 1) return;
+            
             currentImageIndex += direction;
             
-            // التكرار الدائري
-            if (currentImageIndex >= currentImages.length) {
-                currentImageIndex = 0;
-            } else if (currentImageIndex < 0) {
-                currentImageIndex = currentImages.length - 1;
-            }
+            if (currentImageIndex >= currentImages.length) currentImageIndex = 0;
+            else if (currentImageIndex < 0) currentImageIndex = currentImages.length - 1;
             
-            updateLightboxImage();
+            const img = document.getElementById('lightboxImg');
+            img.src = currentImages[currentImageIndex] || 'https://via.placeholder.com/800x600?text=No+Image';
+            document.getElementById('currentImg').textContent = currentImageIndex + 1;
         }
 
-        /* ==========================================
-           إغلاق بالـ ESC وأسهم التنقل
-           ========================================== */
+        // إغلاق المودالات
+        function closeGroupsModal() {
+            document.getElementById('groupsModal').classList.remove('active');
+            document.body.style.overflow = 'auto';
+            currentCategory = null;
+        }
+
+        function closeImagesModal() {
+            document.getElementById('imagesModal').classList.remove('active');
+            document.body.style.overflow = 'auto';
+            currentImages = [];
+            currentGroup = null;
+        }
+
+        function backToGroups() {
+            closeImagesModal();
+            document.getElementById('groupsModal').classList.add('active');
+        }
+
+        // إغلاق بالنقر على الخلفية
+        document.getElementById('groupsModal').addEventListener('click', function(e) {
+            if (e.target === this) closeGroupsModal();
+        });
+
+        document.getElementById('imagesModal').addEventListener('click', function(e) {
+            if (e.target === this) closeImagesModal();
+        });
+
+        // التنقل بلوحة المفاتيح
         document.addEventListener('keydown', (e) => {
             if (e.key === 'Escape') {
-                // أولوية الإغلاق: اللايت بوكس أولاً، ثم مودال الصور، ثم مودال المجموعات
                 if (document.getElementById('lightbox').classList.contains('active')) {
                     closeLightbox();
                 } else if (document.getElementById('imagesModal').classList.contains('active')) {
@@ -1665,55 +1562,52 @@ card.innerHTML = `
                 }
             }
             
-            // التنقل بالأسهم في اللايت بوكس
             if (document.getElementById('lightbox').classList.contains('active')) {
                 if (e.key === 'ArrowLeft') changeImage(-1);
                 if (e.key === 'ArrowRight') changeImage(1);
             }
         });
 
-        /* ==========================================
-           تأثيرات GSAP (الموجودة أصلاً)
-           ========================================== */
-        gsap.registerPlugin(ScrollTrigger);
+        // GSAP Animations
+        if (typeof gsap !== 'undefined' && typeof ScrollTrigger !== 'undefined') {
+            gsap.registerPlugin(ScrollTrigger);
 
-        gsap.utils.toArray('.reveal').forEach(element => {
-            gsap.to(element, {
-                opacity: 1,
-                y: 0,
+            gsap.utils.toArray('.reveal').forEach(element => {
+                gsap.to(element, {
+                    opacity: 1,
+                    y: 0,
+                    duration: 1,
+                    ease: "power3.out",
+                    scrollTrigger: {
+                        trigger: element,
+                        start: "top 85%"
+                    }
+                });
+            });
+
+            gsap.utils.toArray('.skill-bar').forEach(bar => {
+                gsap.to(bar, {
+                    width: bar.getAttribute('data-width'),
+                    duration: 1.5,
+                    ease: "power2.out",
+                    scrollTrigger: {
+                        trigger: bar,
+                        start: "top 90%"
+                    }
+                });
+            });
+
+            gsap.from(".reveal-text", {
+                y: 100,
+                opacity: 0,
                 duration: 1,
-                ease: "power3.out",
-                scrollTrigger: {
-                    trigger: element,
-                    start: "top 85%"
-                }
+                stagger: 0.2,
+                ease: "power4.out",
+                delay: 0.5
             });
-        });
+        }
 
-        gsap.utils.toArray('.skill-bar').forEach(bar => {
-            gsap.to(bar, {
-                width: bar.getAttribute('data-width'),
-                duration: 1.5,
-                ease: "power2.out",
-                scrollTrigger: {
-                    trigger: bar,
-                    start: "top 90%"
-                }
-            });
-        });
-
-        gsap.from(".reveal-text", {
-            y: 100,
-            opacity: 0,
-            duration: 1,
-            stagger: 0.2,
-            ease: "power4.out",
-            delay: 0.5
-        });
-
-        /* ==========================================
-           نظام الجسيمات (الموجود أصلاً)
-           ========================================== */
+        // نظام الجسيمات
         const canvas = document.getElementById('particles-canvas');
         const ctx = canvas.getContext('2d');
         let particles = [];
@@ -1782,34 +1676,29 @@ card.innerHTML = `
         }
         animateParticles();
 
-        /* ==========================================
-           المؤشر المخصص (الموجود أصلاً)
-           ========================================== */
+        // المؤشر المخصص
         const cursor = document.getElementById('cursor');
         const cursorDot = document.getElementById('cursor-dot');
 
-        document.addEventListener('mousemove', (e) => {
-            gsap.to(cursor, { x: e.clientX - 10, y: e.clientY - 10, duration: 0.1 });
-            gsap.to(cursorDot, { x: e.clientX - 2, y: e.clientY - 2, duration: 0.5 });
-        });
-
-        document.addEventListener('mousedown', () => cursor.style.transform = 'scale(0.8)');
-        document.addEventListener('mouseup', () => cursor.style.transform = 'scale(1)');
-
-        document.querySelectorAll('a, button, .category-card, .project-card').forEach(el => {
-            el.addEventListener('mouseenter', () => {
-                cursor.style.transform = 'scale(1.5)';
-                cursor.style.borderColor = '#06b6d4';
+        if (cursor && cursorDot) {
+            document.addEventListener('mousemove', (e) => {
+                cursor.style.transform = `translate(${e.clientX - 10}px, ${e.clientY - 10}px)`;
+                cursorDot.style.transform = `translate(${e.clientX - 2}px, ${e.clientY - 2}px)`;
             });
-            el.addEventListener('mouseleave', () => {
-                cursor.style.transform = 'scale(1)';
-                cursor.style.borderColor = '#8b5cf6';
-            });
-        });
 
-        /* ==========================================
-           شريط التنقل (الموجود أصلاً)
-           ========================================== */
+            document.querySelectorAll('a, button, .category-card, .project-card, .modern-group-card, .image-item').forEach(el => {
+                el.addEventListener('mouseenter', () => {
+                    cursor.style.transform = 'scale(1.5)';
+                    cursor.style.borderColor = '#06b6d4';
+                });
+                el.addEventListener('mouseleave', () => {
+                    cursor.style.transform = 'scale(1)';
+                    cursor.style.borderColor = '#8b5cf6';
+                });
+            });
+        }
+
+        // شريط التنقل
         const navbar = document.getElementById('navbar');
         window.addEventListener('scroll', () => {
             if (window.scrollY > 50) {
@@ -1827,9 +1716,10 @@ card.innerHTML = `
         });
 
         document.getElementById('back-to-top').addEventListener('click', () => {
-            window.scrollTo({ top: 0 });
+            window.scrollTo({ top: 0, behavior: 'smooth' });
         });
 
+        // قائمة الموبايل
         const mobileMenuBtn = document.getElementById('mobile-menu-btn');
         const mobileMenu = document.getElementById('mobile-menu');
         
@@ -1843,9 +1733,7 @@ card.innerHTML = `
             });
         });
 
-        /* ==========================================
-           تبديل الوضع (الموجود أصلاً)
-           ========================================== */
+        // تبديل الوضع
         const themeToggle = document.getElementById('theme-toggle');
         const themeIcon = document.getElementById('theme-icon');
         let isDark = true;
@@ -1869,9 +1757,7 @@ card.innerHTML = `
             }
         });
 
-        /* ==========================================
-           شاشة التحميل (الموجودة أصلاً)
-           ========================================== */
+        // شاشة التحميل
         window.addEventListener('load', () => {
             const loader = document.getElementById('loader');
             const progressFill = document.getElementById('progress-fill');
@@ -1901,9 +1787,7 @@ card.innerHTML = `
             }, 200);
         });
 
-        /* ==========================================
-           معالجة النموذج (الموجودة أصلاً)
-           ========================================== */
+        // معالجة النموذج
         function handleSubmit(e) {
             e.preventDefault();
             
@@ -1920,6 +1804,7 @@ card.innerHTML = `
             }, 3000);
         }
 
+        // روابط سلسة
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 e.preventDefault();
