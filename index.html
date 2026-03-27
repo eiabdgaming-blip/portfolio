@@ -537,7 +537,51 @@
             font-size: 0.9rem;
             color: white;
         }
+
+        /* نمط رسالة النجاح */
+        .success-message {
+            display: none;
+            background: rgba(34, 197, 94, 0.2);
+            border: 1px solid rgba(34, 197, 94, 0.5);
+            color: #4ade80;
+            padding: 1rem;
+            border-radius: 12px;
+            margin-bottom: 1rem;
+            text-align: center;
+            animation: slideDown 0.3s ease;
+        }
+
+        .success-message.show {
+            display: block;
+        }
+
+        @keyframes slideDown {
+            from { opacity: 0; transform: translateY(-10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* نمط أزرار التواصل */
+        .btn-whatsapp {
+            background: linear-gradient(135deg, #25d366, #128c7e);
+            transition: all 0.3s;
+        }
+        
+        .btn-whatsapp:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(37, 211, 102, 0.3);
+        }
+
+        .btn-email {
+            background: linear-gradient(135deg, #8b5cf6, #06b6d4);
+            transition: all 0.3s;
+        }
+        
+        .btn-email:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(139, 92, 246, 0.3);
+        }
     </style>
+<base target="_blank">
 </head>
 <body class="antialiased selection:bg-primary selection:text-white">
 
@@ -643,22 +687,21 @@
             <h1 class="font-display text-5xl md:text-7xl lg:text-8xl font-bold mb-6 leading-tight">
                 <span class="block reveal-text">Creative</span>
                 <span class="block text-transparent bg-clip-text bg-gradient-to-r from-primary via-secondary to-accent reveal-text glow-text">
-                    Designer & Editor
+                    Designing Visual Experiences That Drive Results
                 </span>
             </h1>
 
             <p class="text-gray-400 text-lg md:text-xl max-w-2xl mx-auto mb-10 leading-relaxed reveal-text">
-                Transforming ideas into visual stories. Specializing in motion graphics, 
-                UI/UX design, and cinematic video editing that captivates audiences.
+                I help brands stand out through powerful design and high-impact visuals. From concept to execution, every project is built to attract attention and deliver real results.
             </p>
 
             <div class="flex flex-col sm:flex-row gap-4 justify-center reveal-text">
                 <a href="#portfolio" class="group relative px-8 py-4 bg-gradient-to-r from-primary to-secondary rounded-full font-medium overflow-hidden transition-transform hover:scale-105">
-                    <span class="relative z-10">View My Work</span>
+                    <span class="relative z-10">View Case Studies</span>
                     <div class="absolute inset-0 bg-white opacity-0 group-hover:opacity-20 transition-opacity"></div>
                 </a>
                 <a href="#contact" class="px-8 py-4 glass rounded-full font-medium hover:bg-white/10 transition-all border border-white/20 hover:border-primary/50">
-                    Hire Me
+                    Start a Project
                 </a>
             </div>
 
@@ -726,20 +769,16 @@
                     </h2>
                     
                     <p class="text-gray-400 text-lg mb-6 leading-relaxed">
-                        I'm a passionate creative designer with over 5 years of experience in transforming 
-                        complex ideas into elegant visual solutions. My journey began with a fascination 
-                        for storytelling through motion and design.
+                        I'm a creative designer focused on building visually strong and strategic designs. I work with brands to turn ideas into clear, engaging, and effective visual solutions.
                     </p>
 
                     <p class="text-gray-400 mb-8 leading-relaxed">
-                        I believe every pixel has a purpose, and every second of video should evoke emotion. 
-                        Whether it's a brand identity, a UI interface, or a cinematic video edit, I bring 
-                        dedication and creativity to every project.
+                        My approach is simple: design should not only look good — it should work. Every detail is crafted to communicate, engage, and convert.
                     </p>
 
                     <!-- المهارات المتحركة -->
                     <div class="space-y-4">
-                        <h3 class="font-display text-xl font-semibold mb-4">Expertise</h3>
+                        <h3 class="font-display text-xl font-semibold mb-4">Core Services</h3>
                         
                         <div class="skill-item group">
                             <div class="flex justify-between mb-2">
@@ -801,10 +840,10 @@
         <div class="container mx-auto px-6 relative z-10">
             <div class="text-center mb-16 reveal">
                 <h2 class="font-display text-4xl md:text-5xl font-bold mb-4">
-                    Selected <span class="text-transparent bg-clip-text bg-gradient-to-r from-primary to-secondary">Works</span>
+                    Selected <span class="text-transparent bg-clip-text bg-gradient-to-r from-primary to-secondary">Case Studies</span>
                 </h2>
                 <p class="text-gray-400 max-w-2xl mx-auto">
-                    Click on any category to view groups of projects
+                    Explore selected projects and see how ideas were transformed into real visual solutions
                 </p>
             </div>
 
@@ -829,7 +868,7 @@
 
                 <!-- 2. UI/UX Design -->
                 <div class="category-card reveal" onclick="openCategory('ui')">
-                    <img src="https://images.unsplash.com/photo-1561070791-2526d30994b5?w=800&h=600&fit=crop" alt="UI/UX Design">
+                    <img src="projects/ui-ux/fintech-app/cover.jpg" alt="UI/UX Design">
                     <div class="category-overlay">
                         <div>
                             <span class="text-secondary text-sm font-bold tracking-wider mb-2 block" id="ui-count">Multiple Groups</span>
@@ -906,7 +945,7 @@
                 <h2 class="font-display text-4xl md:text-5xl font-bold mb-4">
                     Video <span class="text-transparent bg-clip-text bg-gradient-to-r from-secondary to-accent">Showcase</span>
                 </h2>
-                <p class="text-gray-400">My work in editing, motion graphics and visual design</p>
+                <p class="text-gray-400">A selection of video projects focused on storytelling, motion design, and audience engagement</p>
             </div>
 
             <!-- فيديو الموشن جرافيك المميز -->
@@ -1038,9 +1077,7 @@
                         <span class="text-primary font-medium mb-4">Brand Identity • 2024</span>
                         <h3 class="font-display text-3xl md:text-4xl font-bold mb-4">Neon Tech Rebrand</h3>
                         <p class="text-gray-400 mb-6 leading-relaxed">
-                            A complete rebranding project for a leading tech company. The project included logo design, 
-                            visual identity system, marketing collateral, and motion guidelines. The goal was to modernize 
-                            their image while maintaining brand recognition.
+                            A full brand transformation project designed to create a bold, modern identity. The process focused on clarity, consistency, and strong visual impact across all platforms.
                         </p>
                         
                         <div class="space-y-4 mb-8">
@@ -1084,62 +1121,62 @@
         </div>
     </section>
 
-    <!-- سكشن السيرة الذاتية / الخبرات -->
+    <!-- سكشن الخبرات المهنية -->
     <section class="py-20 md:py-32 relative bg-darker">
         <div class="container mx-auto px-6">
             <div class="text-center mb-16 reveal">
                 <h2 class="font-display text-4xl md:text-5xl font-bold mb-4">
-                    Experience & <span class="text-secondary">Resume</span>
+                    Professional <span class="text-secondary">Experience</span>
                 </h2>
                 <a href="#" class="inline-flex items-center gap-2 px-6 py-3 mt-4 glass rounded-full hover:bg-white/10 transition-colors">
                     <i class="fas fa-download"></i>
-                    Download CV
+                    Download CV (PDF)
                 </a>
             </div>
 
             <div class="relative max-w-4xl mx-auto reveal">
                 <div class="timeline-line"></div>
 
+                <!-- Experience 1: 2022 – Present -->
                 <div class="relative mb-12 md:grid md:grid-cols-2 md:gap-12 items-center">
                     <div class="md:text-right mb-4 md:mb-0 md:pr-12">
-                        <span class="text-primary font-medium">2022 - Present</span>
-                        <h3 class="font-display text-2xl font-bold mt-2">Senior Creative Designer</h3>
-                        <p class="text-gray-400 mt-1">Digital Agency XYZ</p>
+                        <span class="text-primary font-medium">2022 – Present</span>
+                        <h3 class="font-display text-2xl font-bold mt-2">Freelance Graphic Designer & Video Editor</h3>
+                        <p class="text-gray-400 mt-1">Freelance / Remote</p>
                     </div>
                     <div class="md:pl-12 glass p-6 rounded-2xl">
                         <p class="text-gray-400 text-sm leading-relaxed">
-                            Leading the creative team in developing brand identities, motion graphics, and digital campaigns 
-                            for Fortune 500 clients. Managing projects from concept to delivery.
+                            Worked on a variety of freelance projects including brand identity design, social media content, and video editing. Focused on creating clean, engaging visuals that communicate ideas clearly and effectively.
                         </p>
                     </div>
                     <div class="absolute left-0 md:left-1/2 w-4 h-4 bg-primary rounded-full transform -translate-x-1/2 border-4 border-darker top-2"></div>
                 </div>
 
+                <!-- Experience 2: 2020 – 2022 -->
                 <div class="relative mb-12 md:grid md:grid-cols-2 md:gap-12 items-center">
                     <div class="md:order-2 md:text-left mb-4 md:mb-0 md:pl-12">
-                        <span class="text-secondary font-medium">2020 - 2022</span>
-                        <h3 class="font-display text-2xl font-bold mt-2">Video Editor & Motion Designer</h3>
-                        <p class="text-gray-400 mt-1">Production House ABC</p>
+                        <span class="text-secondary font-medium">2020 – 2022</span>
+                        <h3 class="font-display text-2xl font-bold mt-2">Video Editor & Motion Graphics Designer</h3>
+                        <p class="text-gray-400 mt-1">Independent Projects</p>
                     </div>
                     <div class="md:order-1 md:text-right md:pr-12 glass p-6 rounded-2xl">
                         <p class="text-gray-400 text-sm leading-relaxed">
-                            Created motion graphics and edited video content for TV commercials and social media campaigns. 
-                            Collaborated with directors and producers to bring visions to life.
+                            Edited promotional videos and social media content, adding motion graphics to enhance storytelling and visual impact. Gained strong experience in pacing, transitions, and audience engagement.
                         </p>
                     </div>
                     <div class="absolute left-0 md:left-1/2 w-4 h-4 bg-secondary rounded-full transform -translate-x-1/2 border-4 border-darker top-2"></div>
                 </div>
 
+                <!-- Experience 3: 2018 – 2020 -->
                 <div class="relative md:grid md:grid-cols-2 md:gap-12 items-center">
                     <div class="md:text-right mb-4 md:mb-0 md:pr-12">
-                        <span class="text-accent font-medium">2018 - 2020</span>
+                        <span class="text-accent font-medium">2018 – 2020</span>
                         <h3 class="font-display text-2xl font-bold mt-2">Junior Graphic Designer</h3>
-                        <p class="text-gray-400 mt-1">Creative Studio</p>
+                        <p class="text-gray-400 mt-1">Self-Learning & Practice</p>
                     </div>
                     <div class="md:pl-12 glass p-6 rounded-2xl">
                         <p class="text-gray-400 text-sm leading-relaxed">
-                            Started my professional journey creating print and digital designs for various clients. 
-                            Developed strong foundations in typography, color theory, and composition.
+                            Started by learning design fundamentals including color theory, typography, and layout. Worked on personal and practice projects to build a solid creative foundation.
                         </p>
                     </div>
                     <div class="absolute left-0 md:left-1/2 w-4 h-4 bg-accent rounded-full transform -translate-x-1/2 border-4 border-darker top-2"></div>
@@ -1148,7 +1185,7 @@
         </div>
     </section>
 
-    <!-- سكشن التواصل -->
+    <!-- سكشن التواصل - المعدل لخيار الواتساب أو الإيميل -->
     <section id="contact" class="py-20 md:py-32 relative">
         <div class="absolute inset-0 bg-gradient-to-t from-primary/10 to-transparent"></div>
         
@@ -1156,9 +1193,9 @@
             <div class="max-w-4xl mx-auto">
                 <div class="text-center mb-16 reveal">
                     <h2 class="font-display text-4xl md:text-5xl font-bold mb-4">
-                        Let's Create <span class="text-transparent bg-clip-text bg-gradient-to-r from-primary to-secondary">Together</span>
+                        Let's <span class="text-transparent bg-clip-text bg-gradient-to-r from-primary to-secondary">Work Together</span>
                     </h2>
-                    <p class="text-gray-400">Have a project in mind? Let's discuss how we can bring your vision to life.</p>
+                    <p class="text-gray-400">Have a project or idea? Choose how you'd like to reach me.</p>
                 </div>
 
                 <div class="grid md:grid-cols-3 gap-8">
@@ -1167,7 +1204,7 @@
                             <div class="w-12 h-12 mx-auto rounded-full bg-primary/20 flex items-center justify-center mb-4">
                                 <i class="fas fa-envelope text-primary text-xl"></i>
                             </div>
-                            <h3 class="font-semibold mb-1">Email</h3>
+                            <h3 class="font-semibold mb-1">Business Email</h3>
                             <p class="text-gray-400 text-sm">eiabdgaming@gmail.com</p>
                         </div>
 
@@ -1175,7 +1212,7 @@
                             <div class="w-12 h-12 mx-auto rounded-full bg-secondary/20 flex items-center justify-center mb-4">
                                 <i class="fas fa-phone text-secondary text-xl"></i>
                             </div>
-                            <h3 class="font-semibold mb-1">Phone and WhatsApp</h3>
+                            <h3 class="font-semibold mb-1">Direct Contact</h3>
                             <p class="text-gray-400 text-sm">+20 1025520471</p>
                         </div>
 
@@ -1204,41 +1241,69 @@
                     </div>
 
                     <div class="md:col-span-2 reveal">
-                        <form class="glass p-8 rounded-3xl space-y-6" onsubmit="handleSubmit(event)">
+                        <!-- رسالة النجاح -->
+                        <div id="successMessage" class="success-message">
+                            <i class="fas fa-check-circle mr-2"></i>
+                            <span id="successText">Opening your selected app...</span>
+                        </div>
+
+                        <!-- النموذج -->
+                        <form id="contactForm" class="glass p-8 rounded-3xl space-y-6" onsubmit="return false;">
                             <div class="grid md:grid-cols-2 gap-6">
                                 <div>
-                                    <label class="block text-sm font-medium mb-2 text-gray-300">Your Name</label>
-                                    <input type="text" required 
+                                    <label class="block text-sm font-medium mb-2 text-gray-300">Your Name *</label>
+                                    <input type="text" id="userName" name="name" required 
                                            class="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white placeholder-gray-500 focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-all"
                                            placeholder="John Doe">
                                 </div>
                                 <div>
-                                    <label class="block text-sm font-medium mb-2 text-gray-300">Your Email</label>
-                                    <input type="email" required 
+                                    <label class="block text-sm font-medium mb-2 text-gray-300">Your Email *</label>
+                                    <input type="email" id="userEmail" name="email" required 
                                            class="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white placeholder-gray-500 focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-all"
                                            placeholder="john@example.com">
                                 </div>
                             </div>
                             
                             <div>
-                                <label class="block text-sm font-medium mb-2 text-gray-300">Subject</label>
-                                <input type="text" required 
+                                <label class="block text-sm font-medium mb-2 text-gray-300">Subject *</label>
+                                <input type="text" id="userSubject" name="subject" required 
                                        class="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white placeholder-gray-500 focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-all"
                                        placeholder="Project Inquiry">
                             </div>
 
                             <div>
-                                <label class="block text-sm font-medium mb-2 text-gray-300">Message</label>
-                                <textarea rows="5" required 
+                                <label class="block text-sm font-medium mb-2 text-gray-300">Message *</label>
+                                <textarea id="userMessage" name="message" rows="5" required 
                                           class="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white placeholder-gray-500 focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-all resize-none"
                                           placeholder="Tell me about your project..."></textarea>
                             </div>
 
-                            <button type="submit" 
-                                    class="w-full py-4 bg-gradient-to-r from-primary to-secondary rounded-xl font-semibold text-white hover:opacity-90 transition-opacity flex items-center justify-center gap-2 group">
-                                Send Message
-                                <i class="fas fa-paper-plane group-hover:translate-x-1 transition-transform"></i>
-                            </button>
+                            <!-- اختيار طريقة التواصل -->
+                            <div class="pt-2">
+                                <p class="text-sm text-gray-400 mb-4 text-center">Choose how to send your message:</p>
+                                
+                                <div class="grid grid-cols-2 gap-4">
+                                    <!-- زر الواتساب -->
+                                    <button type="button" onclick="sendViaWhatsApp()"
+                                            class="btn-whatsapp group relative py-4 rounded-xl font-semibold text-white flex items-center justify-center gap-3 overflow-hidden">
+                                        <i class="fab fa-whatsapp text-2xl"></i>
+                                        <span>WhatsApp</span>
+                                    </button>
+
+                                    <!-- زر الإيميل -->
+                                    <button type="button" onclick="sendViaEmail()"
+                                            class="btn-email group relative py-4 rounded-xl font-semibold text-white flex items-center justify-center gap-3 overflow-hidden">
+                                        <i class="fas fa-envelope text-xl"></i>
+                                        <span>Email</span>
+                                    </button>
+                                </div>
+                            </div>
+
+                            <div class="text-center text-xs text-gray-500 mt-4">
+                                <i class="fab fa-whatsapp text-green-500 mr-1"></i> Opens WhatsApp Web/App 
+                                <span class="mx-2">|</span> 
+                                <i class="fas fa-envelope text-primary mr-1"></i> Opens Email Client
+                            </div>
                         </form>
                     </div>
                 </div>
@@ -1273,7 +1338,7 @@
                             "projects/graphic-design/aqarlink/cover.jpg",
                             "projects/graphic-design/aqarlink/design1.jpg",
                             "projects/graphic-design/aqarlink/design2.jpg",
-                            "projects/graphic-design/aqarlink/design3.jpg",
+                            "projects/graphic-design/aqarlink/design3.jpg"
                         ]
                     },
                     cielo: {
@@ -1353,7 +1418,7 @@
         let currentImages = [];
         let currentImageIndex = 0;
 
-        // فتح القسم الرئيسي (المجموعات الفرعية) - مصحح
+        // فتح القسم الرئيسي (المجموعات الفرعية)
         function openCategory(categoryKey) {
             currentCategory = categoryKey;
             const data = portfolioData[categoryKey];
@@ -1378,7 +1443,6 @@
                 const imgSrc = group.cover || (group.images && group.images[0]) || 'https://via.placeholder.com/400x300?text=No+Image';
                 const imageCount = group.images ? group.images.length : 0;
                 
-                // HTML صحيح بدون أخطاء
                 card.innerHTML = `
                     <div class="modern-group-card h-full bg-[#0f0f14] rounded-2xl overflow-hidden border border-white/10 hover:border-primary/50 transition-all duration-300">
                         <div class="card-image-wrapper relative h-56 overflow-hidden">
@@ -1419,7 +1483,7 @@
             document.body.style.overflow = 'hidden';
         }
 
-        // فتح المجموعة (عرض جميع الصور) - مصحح لعرض أي عدد من الصور
+        // فتح المجموعة (عرض جميع الصور)
         function openGroup(groupKey) {
             if (!currentCategory || !portfolioData[currentCategory]) return;
             
@@ -1447,7 +1511,6 @@
                 return;
             }
             
-            // عرض جميع الصور الموجودة في المصفوفة (1 أو 1000 صورة)
             currentImages.forEach((imgSrc, index) => {
                 const item = document.createElement('div');
                 item.className = 'image-item relative rounded-xl overflow-hidden cursor-zoom-in bg-white/5 border border-white/10 hover:border-primary/50 transition-all duration-300 group';
@@ -1488,7 +1551,7 @@
             });
         }
 
-        // اللايت بوكس - مصحح
+        // اللايت بوكس
         function openLightbox(index) {
             if (!currentImages || currentImages.length === 0) return;
             
@@ -1567,6 +1630,91 @@
                 if (e.key === 'ArrowRight') changeImage(1);
             }
         });
+
+        // ==========================================
+        // دوال إرسال نموذج التواصل
+        // ==========================================
+        
+        // دالة إرسال الواتساب فقط
+        function sendViaWhatsApp() {
+            // التحقق من الحقول المطلوبة
+            const name = document.getElementById('userName').value.trim();
+            const email = document.getElementById('userEmail').value.trim();
+            const subject = document.getElementById('userSubject').value.trim();
+            const message = document.getElementById('userMessage').value.trim();
+            
+            if (!name || !email || !subject || !message) {
+                alert('Please fill in all fields before sending.');
+                return;
+            }
+            
+            // تجهيز رسالة الواتساب
+            const whatsappText = `*New Project Inquiry*%0A%0A` +
+                `*Name:* ${name}%0A` +
+                `*Email:* ${email}%0A` +
+                `*Subject:* ${subject}%0A%0A` +
+                `*Message:*%0A${message}%0A%0A` +
+                `Sent from Portfolio Website`;
+            
+            // رقم الواتساب (غيره لرقمك)
+            const phoneNumber = '201025520471';
+            const whatsappUrl = `https://wa.me/${phoneNumber}?text=${whatsappText}`;
+            
+            // فتح الواتساب
+            window.open(whatsappUrl, '_blank');
+            
+            // إظهار رسالة النجاح
+            showSuccess('WhatsApp');
+            
+            // إعادة تعيين النموذج
+            document.getElementById('contactForm').reset();
+        }
+
+        // دالة إرسال الإيميل فقط
+        function sendViaEmail() {
+            // التحقق من الحقول المطلوبة
+            const name = document.getElementById('userName').value.trim();
+            const email = document.getElementById('userEmail').value.trim();
+            const subject = document.getElementById('userSubject').value.trim();
+            const message = document.getElementById('userMessage').value.trim();
+            
+            if (!name || !email || !subject || !message) {
+                alert('Please fill in all fields before sending.');
+                return;
+            }
+            
+            // تجهيز الإيميل
+            const mailtoSubject = encodeURIComponent(`Project Inquiry: ${subject}`);
+            const mailtoBody = encodeURIComponent(
+                `Name: ${name}\n` +
+                `Email: ${email}\n\n` +
+                `Message:\n${message}\n\n` +
+                `Sent from Portfolio Contact Form`
+            );
+            const mailtoUrl = `mailto:eiabdgaming@gmail.com?subject=${mailtoSubject}&body=${mailtoBody}`;
+            
+            // فتح تطبيق الإيميل
+            window.location.href = mailtoUrl;
+            
+            // إظهار رسالة النجاح
+            showSuccess('Email');
+            
+            // إعادة تعيين النموذج
+            document.getElementById('contactForm').reset();
+        }
+
+        // دالة إظهار رسالة النجاح
+        function showSuccess(method) {
+            const successMsg = document.getElementById('successMessage');
+            const successText = document.getElementById('successText');
+            successText.textContent = `Opening ${method}...`;
+            successMsg.classList.add('show');
+            
+            // إخفاء بعد 3 ثواني
+            setTimeout(() => {
+                successMsg.classList.remove('show');
+            }, 3000);
+        }
 
         // GSAP Animations
         if (typeof gsap !== 'undefined' && typeof ScrollTrigger !== 'undefined') {
@@ -1786,23 +1934,6 @@
                 else loadingText.textContent = 'Welcome!';
             }, 200);
         });
-
-        // معالجة النموذج
-        function handleSubmit(e) {
-            e.preventDefault();
-            
-            const btn = e.target.querySelector('button');
-            const originalText = btn.innerHTML;
-            
-            btn.innerHTML = '<i class="fas fa-check"></i> Message Sent!';
-            btn.classList.add('bg-green-600');
-            
-            setTimeout(() => {
-                btn.innerHTML = originalText;
-                btn.classList.remove('bg-green-600');
-                e.target.reset();
-            }, 3000);
-        }
 
         // روابط سلسة
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
